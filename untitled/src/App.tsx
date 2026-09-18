@@ -284,8 +284,15 @@ function HeroSection() {
 }
 
 function IngredientsSection() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
-    <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
+    <div 
+      className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900 cursor-pointer"
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
+      onClick={() => setIsActive(!isActive)}
+    >
       <video
         src="/images/journal.mp4"
         autoPlay
@@ -294,53 +301,77 @@ function IngredientsSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
       />
+
+      {/* Tagline on Left (Visible when not active) */}
+      <AnimatePresence>
+        {!isActive && (
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="absolute left-6 md:left-16 z-10 flex items-center pointer-events-none max-w-lg"
+          >
+            <h2 className="text-white font-['Montserrat'] font-extrabold uppercase text-3xl md:text-5xl leading-tight tracking-[0.08em] drop-shadow-2xl">
+              ELEVATE EVERY DRIVE. <br/><span className="text-[#D4AF37]">THE LUXURY CAR PERFUME.</span>
+            </h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      {/* Content Overlay - Line Layout on Left */}
-      <div className="absolute inset-0 z-10 p-6 md:p-16 flex flex-col justify-center items-start gap-4 md:gap-6">
-        
-        {/* Card 1 */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
-        >
-          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Luxury Atmosphere</h3>
-          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
-            Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
-          </p>
-        </motion.div>
-        
-        {/* Card 2 */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
-        >
-          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">One Touch Refresh</h3>
-          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
-            A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
-          </p>
-        </motion.div>
-        
-        {/* Card 3 */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
-        >
-          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Long-Lasting Elegance</h3>
-          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
-            Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
-          </p>
-        </motion.div>
-        
-      </div>
+      {/* Content Overlay - Line Layout on Left (Visible when active) */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 z-10 p-6 md:p-16 flex flex-col justify-center items-start gap-4 md:gap-6"
+          >
+            
+            {/* Card 1 */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
+            >
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Luxury Atmosphere</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+                Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
+              </p>
+            </motion.div>
+            
+            {/* Card 2 */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
+            >
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">One Touch Refresh</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+                A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
+              </p>
+            </motion.div>
+            
+            {/* Card 3 */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
+            >
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Long-Lasting Elegance</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+                Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
+              </p>
+            </motion.div>
+            
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
