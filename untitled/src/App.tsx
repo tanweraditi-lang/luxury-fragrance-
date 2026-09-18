@@ -294,6 +294,27 @@ function IngredientsSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
       />
+      
+      {/* Content Overlay - Staggered Cards Layout */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4">
+        {/* Row 1: 3 Cards */}
+        <div className="flex gap-4 md:gap-8 mb-4 md:mb-8">
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 1</div>
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 2</div>
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 3</div>
+        </div>
+        
+        {/* Row 2: 2 Cards */}
+        <div className="flex gap-4 md:gap-8 mb-4 md:mb-8">
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 4</div>
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 5</div>
+        </div>
+        
+        {/* Row 3: 1 Card */}
+        <div className="flex gap-4 md:gap-8">
+          <div className="w-24 h-32 md:w-48 md:h-64 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-xs md:text-lg shadow-2xl transition-transform hover:scale-105 cursor-pointer">Card 6</div>
+        </div>
+      </div>
     </div>
   );
 }
