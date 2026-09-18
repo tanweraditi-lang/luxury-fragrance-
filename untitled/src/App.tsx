@@ -215,63 +215,17 @@ const heroImages = [
 ];
 
 function HeroSection() {
-  const [imageIndex, setImageIndex] = useState(0);
-
-  const nextImage = () => {
-    setImageIndex((prev) => (prev + 1) % heroImages.length);
-  };
-
-  const prevImage = () => {
-    setImageIndex((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
-  };
-
-  useEffect(() => {
-    const isVideo = heroImages[imageIndex].endsWith('.mp4');
-    
-    // If it's a video, we wait for the onEnded event instead of a fixed timer
-    if (isVideo) return;
-
-    const interval = setInterval(() => {
-      nextImage();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [imageIndex]);
-
   return (
     <div className="relative w-full min-h-[100vh] md:h-[100vh] flex flex-col md:flex-row md:items-center overflow-hidden bg-[#FDFBF7] md:bg-gray-900">
       <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900 pt-16 md:pt-0">
-        {heroImages.map((src, idx) => {
-          const isVideo = src.endsWith('.mp4');
-          return isVideo ? (
-            <video
-              key={idx}
-              src={src}
-              muted
-              playsInline
-              onEnded={() => {
-                if (idx === imageIndex) nextImage();
-              }}
-              ref={(el) => {
-                if (el) {
-                  if (idx === imageIndex) {
-                    el.currentTime = 0;
-                    el.play().catch(() => {});
-                  } else {
-                    el.pause();
-                  }
-                }
-              }}
-              className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ease-in-out brightness-125 contrast-125 saturate-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
-            />
-          ) : (
-            <img
-              key={idx}
-              src={src}
-              alt="Hero Image"
-              className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ease-in-out brightness-110 contrast-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
-            />
-          );
-        })}
+        <video
+          src={heroImages[0]}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-contain md:object-cover"
+        />
       </div>
       {/* Light overlay to ensure black text remains readable over the image */}
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent w-full md:w-1/2 z-10"></div>
