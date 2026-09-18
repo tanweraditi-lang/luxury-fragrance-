@@ -245,46 +245,46 @@ function HeroSection() {
   }, [imageIndex]);
 
   return (
-    <div className="relative w-full h-[100vh] flex items-center overflow-hidden bg-gray-900">
-      {heroImages.map((src, idx) => {
-        const isVideo = src.endsWith('.mp4');
-        return isVideo ? (
-          <video
-            key={idx}
-            src={src}
-            muted
-            playsInline
-            onEnded={() => {
-              if (idx === imageIndex) nextImage();
-            }}
-            ref={(el) => {
-              if (el) {
-                if (idx === imageIndex) {
-                  el.currentTime = 0;
-                  el.play().catch(() => {});
-                } else {
-                  el.pause();
+    <div className="relative w-full min-h-[100vh] md:h-[100vh] flex flex-col md:flex-row md:items-center overflow-hidden bg-[#FDFBF7] md:bg-gray-900">
+      <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900 pt-16 md:pt-0">
+        {heroImages.map((src, idx) => {
+          const isVideo = src.endsWith('.mp4');
+          return isVideo ? (
+            <video
+              key={idx}
+              src={src}
+              muted
+              playsInline
+              onEnded={() => {
+                if (idx === imageIndex) nextImage();
+              }}
+              ref={(el) => {
+                if (el) {
+                  if (idx === imageIndex) {
+                    el.currentTime = 0;
+                    el.play().catch(() => {});
+                  } else {
+                    el.pause();
+                  }
                 }
-              }
-            }}
-            style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out brightness-125 contrast-125 saturate-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
-          />
-        ) : (
-          <img
-            key={idx}
-            src={src}
-            alt="Hero Image"
-            style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out brightness-110 contrast-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
-          />
-        );
-      })}
+              }}
+              className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ease-in-out brightness-125 contrast-125 saturate-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ) : (
+            <img
+              key={idx}
+              src={src}
+              alt="Hero Image"
+              className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-1000 ease-in-out brightness-110 contrast-110 ${idx === imageIndex ? 'opacity-100' : 'opacity-0'}`}
+            />
+          );
+        })}
+      </div>
       {/* Light overlay to ensure black text remains readable over the image */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent w-full md:w-1/2 z-10"></div>
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent w-full md:w-1/2 z-10"></div>
 
       {/* Hero Slider Navigation Arrows */}
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-30 flex items-center gap-3">
+      <div className="absolute top-[43vh] md:top-auto bottom-auto md:bottom-12 right-4 md:right-12 z-30 flex items-center gap-3">
         <button
           onClick={prevImage}
           className="w-12 h-12 flex items-center justify-center bg-[#0F172A] text-white rounded-full shadow-lg hover:bg-[#1E293B] hover:scale-105 active:scale-95 transition-all duration-300"
@@ -301,7 +301,7 @@ function HeroSection() {
         </button>
       </div>
 
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col items-start relative z-20 h-[100vh] justify-center">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col items-start relative z-20 h-auto md:h-[100vh] justify-center py-12 md:py-0">
         <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start mt-4">
           
           <h2 className="text-[11px] md:text-[13px] font-['Montserrat'] font-bold tracking-[0.3em] uppercase text-black mb-4">
