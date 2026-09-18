@@ -489,47 +489,16 @@ function IngredientsSection() {
 
 function FeatureSection() {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-      className="w-full bg-transparent flex flex-col items-center justify-center px-6 md:px-16 pt-6 pb-4 md:pt-10 md:pb-6"
-    >
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 flex flex-col items-center">
-        <div className="flex items-center gap-4 mb-8">
-          <div className="w-10 h-[1px] bg-gray-300"></div>
-          <p className="text-gray-500 font-semibold text-[10px] tracking-[0.3em] uppercase">
-            Journals
-          </p>
-          <div className="w-10 h-[1px] bg-gray-300"></div>
-        </div>
-        <h2 className="text-3xl md:text-5xl font-serif italic text-gray-900 mb-6 tracking-wider leading-tight">
-          The Art of Luxury
-        </h2>
-        <p className="text-gray-600 font-medium text-[15px] leading-loose max-w-2xl mx-auto">
-          Discover the meticulous craftsmanship, unparalleled quality, and exceptional services that define the <b>ARION</b> experience. We believe that true luxury lies in the details.
-        </p>
-      </div>
-
-      {/* Icons */}
-      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 w-full mb-12 md:mb-16">
-        <Feature icon={MessageCircle} text="Concierge" />
-        <Feature icon={RefreshCcw} text="Complimentary Returns" />
-        <Feature icon={ShieldCheck} text="Authenticity Guaranteed" />
-        <Feature icon={Truck} text="Signature Packaging" />
-        <Feature icon={Plane} text="Worldwide Delivery" />
-      </div>
-
-      {/* Quote */}
-      <div className="text-center max-w-3xl mx-auto border-t border-gray-100 pt-12 md:pt-16 px-4">
-        <p className="font-serif italic text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
-          "A fragrance is the silent poetry of your soul, leaving an unforgettable trail of memories wherever you go."
-        </p>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold">— The House of <b>ARION</b></p>
-      </div>
-    </motion.div>
+    <div className="w-full h-[60vh] md:h-[80vh] relative overflow-hidden bg-black flex items-center justify-center">
+      <video 
+        src="/images/journal.mp4" 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        className="w-full h-full object-cover brightness-110 contrast-105"
+      />
+    </div>
   );
 }
 
