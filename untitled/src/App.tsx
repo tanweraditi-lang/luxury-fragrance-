@@ -176,12 +176,11 @@ export default function App() {
             </div>
           </div>
         </div>
-        
-        <div className="hidden md:flex gap-12 text-[11px] md:text-[12px] font-['Montserrat'] uppercase tracking-[0.15em] font-semibold items-center relative z-10">
-          <button onClick={() => scrollToSection(1)} className={`hover:opacity-70 transition-all ${activeSection === 1 ? 'opacity-100 font-bold border-b-2 border-black pb-1' : 'opacity-90'}`}>Collections</button>
-          <button onClick={() => scrollToSection(2)} className={`hover:opacity-70 transition-all ${activeSection === 2 ? 'opacity-100 font-bold border-b-2 border-black pb-1' : 'opacity-90'}`}>Our story</button>
-          <button onClick={() => scrollToSection(3)} className={`hover:opacity-70 transition-all ${activeSection === 3 ? 'opacity-100 font-bold border-b-2 border-black pb-1' : 'opacity-90'}`}>Journals</button>
-          <button onClick={() => scrollToSection(4)} className={`hover:opacity-70 transition-all ${activeSection === 4 ? 'opacity-100 font-bold border-b-2 border-black pb-1' : 'opacity-90'}`}>Contact</button>
+        <div className="hidden md:flex gap-12 text-[13px] md:text-[15px] font-['Montserrat'] uppercase tracking-[0.15em] font-bold items-center relative z-10">
+          <button onClick={() => scrollToSection(1)} className={`hover:opacity-70 transition-all ${activeSection === 1 ? 'opacity-100 font-extrabold border-b-2 border-black pb-1' : 'opacity-90'}`}>Collections</button>
+          <button onClick={() => scrollToSection(2)} className={`hover:opacity-70 transition-all ${activeSection === 2 ? 'opacity-100 font-extrabold border-b-2 border-black pb-1' : 'opacity-90'}`}>Our story</button>
+          <button onClick={() => scrollToSection(3)} className={`hover:opacity-70 transition-all ${activeSection === 3 ? 'opacity-100 font-extrabold border-b-2 border-black pb-1' : 'opacity-90'}`}>Journals</button>
+          <button onClick={() => scrollToSection(4)} className={`hover:opacity-70 transition-all ${activeSection === 4 ? 'opacity-100 font-extrabold border-b-2 border-black pb-1' : 'opacity-90'}`}>Contact</button>
         </div>
       </nav>
 
