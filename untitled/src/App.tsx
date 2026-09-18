@@ -297,17 +297,49 @@ function IngredientsSection() {
       
       {/* Content Overlay - Descending Staircase Layout on Left */}
       <div className="absolute inset-0 z-10 p-6 md:p-16 flex flex-col justify-center items-start gap-4 md:gap-8">
-        <div className="w-28 h-36 md:w-56 md:h-72 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-sm md:text-xl shadow-2xl transition-transform hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] cursor-pointer ml-0 md:ml-0">
-          Card 1
-        </div>
         
-        <div className="w-28 h-36 md:w-56 md:h-72 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-sm md:text-xl shadow-2xl transition-transform hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] cursor-pointer ml-12 md:ml-32">
-          Card 2
-        </div>
+        {/* Card 1 */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ml-0"
+        >
+          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Luxury Atmosphere</h3>
+          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
+          </p>
+        </motion.div>
         
-        <div className="w-28 h-36 md:w-56 md:h-72 bg-black/40 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-white font-['Montserrat'] font-bold text-sm md:text-xl shadow-2xl transition-transform hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] cursor-pointer ml-24 md:ml-64">
-          Card 3
-        </div>
+        {/* Card 2 */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ml-4 md:ml-24"
+        >
+          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">One Touch Refresh</h3>
+          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
+          </p>
+        </motion.div>
+        
+        {/* Card 3 */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ml-8 md:ml-48"
+        >
+          <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Long-Lasting Elegance</h3>
+          <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
+          </p>
+        </motion.div>
+        
       </div>
     </div>
   );
