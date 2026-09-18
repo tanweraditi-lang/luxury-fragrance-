@@ -322,7 +322,7 @@ function IngredientsSection() {
         onMouseEnter={() => setIsDrawerOpen(true)}
         onMouseLeave={() => setIsDrawerOpen(false)}
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-        className="absolute top-0 left-0 h-full w-[85%] md:w-[45%] max-w-[480px] bg-black/90 backdrop-blur-xl border-r border-[#D4AF37]/30 z-20 flex flex-col justify-center px-6 md:px-10 cursor-pointer shadow-[20px_0_50px_rgba(0,0,0,0.5)]"
+        className="absolute top-0 left-0 h-full w-[85%] md:w-[45%] max-w-[480px] bg-[#FFDAB9]/95 backdrop-blur-xl border-r border-[#D4AF37]/30 z-20 flex flex-col justify-center px-6 md:px-10 cursor-pointer shadow-[20px_0_50px_rgba(0,0,0,0.5)]"
       >
         {/* Visible Edge Indicator (when closed) */}
         <motion.div 
