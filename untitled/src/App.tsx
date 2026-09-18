@@ -211,14 +211,7 @@ export default function App() {
 }
 
 const heroImages = [
-  "/images/zero.hero.mp4",
-  "/images/bottle 1.jpeg",
-  "/images/zero.hero.mp4",
-  "/images/bottle 2.jpeg",
-  "/images/zero.hero.mp4",
-  "/images/bottle 3.jpeg",
-  "/images/zero.hero.mp4",
-  "/images/bottle 4.jpeg"
+  "/images/zero.hero.mp4"
 ];
 
 function HeroSection() {
@@ -283,23 +276,7 @@ function HeroSection() {
       {/* Light overlay to ensure black text remains readable over the image */}
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent w-full md:w-1/2 z-10"></div>
 
-      {/* Hero Slider Navigation Arrows */}
-      <div className="absolute top-[43vh] md:top-auto bottom-auto md:bottom-12 right-4 md:right-12 z-30 flex items-center gap-3">
-        <button
-          onClick={prevImage}
-          className="w-12 h-12 flex items-center justify-center bg-[#0F172A] text-white rounded-full shadow-lg hover:bg-[#1E293B] hover:scale-105 active:scale-95 transition-all duration-300"
-          aria-label="Previous Image"
-        >
-          <ChevronLeft size={20} strokeWidth={1.5} />
-        </button>
-        <button
-          onClick={nextImage}
-          className="w-12 h-12 flex items-center justify-center bg-[#0F172A] text-white rounded-full shadow-lg hover:bg-[#1E293B] hover:scale-105 active:scale-95 transition-all duration-300"
-          aria-label="Next Image"
-        >
-          <ChevronRight size={20} strokeWidth={1.5} />
-        </button>
-      </div>
+
 
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col items-start relative z-20 h-auto md:h-[100vh] justify-center py-12 md:py-0">
         <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start mt-4">
