@@ -284,15 +284,10 @@ function HeroSection() {
 }
 
 function IngredientsSection() {
-  const [isActive, setIsActive] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div 
-      className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900 cursor-pointer"
-      onMouseEnter={() => setIsActive(true)}
-      onMouseLeave={() => setIsActive(false)}
-      onClick={() => setIsActive(!isActive)}
-    >
+    <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
       <video
         src="/images/journal.mp4"
         autoPlay
@@ -302,15 +297,15 @@ function IngredientsSection() {
         className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
       />
 
-      {/* Tagline on Left (Visible when not active) */}
+      {/* Tagline on Left (Visible when drawer closed) */}
       <AnimatePresence>
-        {!isActive && (
+        {!isDrawerOpen && (
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
+            exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="absolute left-6 md:left-16 z-10 flex items-center pointer-events-none max-w-lg"
+            className="absolute left-20 md:left-32 z-10 flex items-center pointer-events-none max-w-lg"
           >
             <h2 className="text-black font-['Montserrat'] font-extrabold uppercase text-xl md:text-3xl leading-tight tracking-[0.08em] drop-shadow-xl">
               ELEVATE EVERY DRIVE. <br/>THE LUXURY CAR PERFUME.
@@ -318,60 +313,55 @@ function IngredientsSection() {
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* Content Overlay - Line Layout on Left (Visible when active) */}
-      <AnimatePresence>
-        {isActive && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 z-10 p-6 md:p-16 flex flex-col justify-center items-start gap-4 md:gap-6"
-          >
-            
+
+      {/* Sliding Black Drawer Container */}
+      <motion.div
+        initial={false}
+        animate={{ x: isDrawerOpen ? 0 : "calc(-100% + 40px)" }}
+        transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+        onMouseEnter={() => setIsDrawerOpen(true)}
+        onMouseLeave={() => setIsDrawerOpen(false)}
+        onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        className="absolute top-0 left-0 h-full w-[85%] md:w-[45%] max-w-[480px] bg-black/90 backdrop-blur-xl border-r border-[#D4AF37]/30 z-20 flex flex-col justify-center px-6 md:px-10 cursor-pointer shadow-[20px_0_50px_rgba(0,0,0,0.5)]"
+      >
+        {/* Visible Edge Indicator (when closed) */}
+        <motion.div 
+          animate={{ opacity: isDrawerOpen ? 0 : 1 }} 
+          className="absolute right-0 top-0 h-full w-[40px] flex items-center justify-center"
+        >
+          <div className="w-[3px] h-16 bg-[#D4AF37]/60 rounded-full" />
+        </motion.div>
+
+        {/* Inner Cards */}
+        <div 
+          className="flex flex-col gap-4 md:gap-6 w-full max-h-full justify-center overflow-y-auto py-8 no-scrollbar transition-opacity duration-300"
+          style={{ opacity: isDrawerOpen ? 1 : 0, pointerEvents: isDrawerOpen ? "auto" : "none" }}
+        >
             {/* Card 1 */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
-            >
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Luxury Atmosphere</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">Luxury Atmosphere</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
                 Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
               </p>
-            </motion.div>
+            </div>
             
             {/* Card 2 */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
-            >
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">One Touch Refresh</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">One Touch Refresh</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
                 A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
               </p>
-            </motion.div>
+            </div>
             
             {/* Card 3 */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="w-[280px] md:w-[420px] bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl pointer-events-auto"
-            >
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2 md:mb-3">Long-Lasting Elegance</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[15px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">Long-Lasting Elegance</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
                 Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
               </p>
-            </motion.div>
-            
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
