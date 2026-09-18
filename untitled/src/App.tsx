@@ -283,222 +283,64 @@ function HeroSection() {
   );
 }
 
-const ingredientsData = [
-  {
-    heading: "Jasmine",
-    description: (
-      <>
-        Hand-picked at dawn when its fragrance is at its richest, Jasmine<br className="hidden md:block" />
-        brings a soft floral sweetness with a calming, luxurious elegance.<br className="hidden md:block" />
-        Its delicate aroma creates a fresh atmosphere inside every journey.
-      </>
-    ),
-    extract: "Absolute & Cold Press",
-    aromaProfile: "Sweet, Floral, White Petal",
-    source: "Grasse, France",
-    image: "/images/jasmine.png",
-    bottleImage: "/images/bottle 3.jpeg",
-    bgColor: "#E8E4D6",
-    bgGradient: "radial-gradient(circle at 75% 50%, #EFE9DB 0%, #D8D0BE 100%)"
-  },
-  {
-    heading: "Lavender",
-    description: (
-      <>
-        Naturally soothing and beautifully balanced, this relaxing floral<br className="hidden md:block" />
-        aroma is prized for its deeply calming and luxurious properties.<br className="hidden md:block" />
-        It fills every drive with a peaceful, clean, and elegant freshness.
-      </>
-    ),
-    extract: "Steam Distillation",
-    aromaProfile: "Herbaceous, Clean, Floral",
-    source: "Provence, France",
-    image: "/images/lavinder.png",
-    bottleImage: "/images/bottle 4.jpeg",
-    bgColor: "#CFC4EA",
-    bgGradient: "radial-gradient(circle at 75% 50%, #DDD4F3 0%, #B8AADF 100%)"
-  },
-  {
-    heading: "Red Rose",
-    description: (
-      <>
-        Rich, velvety petals deliver a timeless floral signature enriched<br className="hidden md:block" />
-        with warmth and romance. Red Rose adds unparalleled depth and<br className="hidden md:block" />
-        a luxurious, elegant character to every single fragrance profile.
-      </>
-    ),
-    extract: "Solvent Extraction",
-    aromaProfile: "Velvety, Romantic, Deep Floral",
-    source: "Damascus, Syria",
-    image: "/images/rose.png",
-    bottleImage: "/images/bottle 1.jpeg",
-    bgColor: "#7E243A",
-    bgGradient: "radial-gradient(circle at 75% 50%, #9A3652 0%, #5E162A 100%)"
-  },
-  {
-    heading: "Dahlia",
-    description: (
-      <>
-        Known for its vibrant beauty and refined floral character, Dahlia<br className="hidden md:block" />
-        introduces a modern elegance with soft, sophisticated freshness.<br className="hidden md:block" />
-        Its bright, powdery aroma lingers beautifully throughout the day.
-      </>
-    ),
-    extract: "Enfleurage",
-    aromaProfile: "Modern, Bright, Powdery",
-    source: "Oaxaca, Mexico",
-    image: "/images/pink flower.jpeg",
-    bottleImage: "/images/bottle 2.jpeg",
-    bgColor: "#C97A93",
-    bgGradient: "radial-gradient(circle at 75% 50%, #D892A8 0%, #B45E7D 100%)"
-  }
-];
-
 function IngredientsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    let interval: any;
-    if (!isHovered) {
-      interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % ingredientsData.length);
-      }, 4000);
-    }
-    return () => clearInterval(interval);
-  }, [isHovered]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % ingredientsData.length);
-  };
-
-  const current = ingredientsData[currentIndex];
-
-  const rowVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-  };
-
   return (
-    <div 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="w-full relative pb-6 pt-[80px] md:pb-10 md:pt-[100px] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden transition-colors duration-[700ms]"
-      style={{ backgroundColor: current.bgColor }}
-    >
-      {/* Dynamic Blurred Background */}
-      <AnimatePresence>
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <div className="absolute inset-0 w-full h-full" style={{ background: current.bgGradient }}></div>
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center blur-[25px] scale-[1.2] opacity-10 mix-blend-overlay"
-            style={{ backgroundImage: `url('${current.image}')` }}
-          />
-          <div className="absolute inset-0 bg-black/10"></div>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Foreground Content */}
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 flex flex-col items-center justify-center h-full">
-        {/* Section Header */}
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={rowVariants}
-          className="w-full max-w-2xl text-center mb-[40px] flex flex-col items-center justify-center mx-auto"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium italic text-gray-900 leading-normal uppercase pt-[10px] m-0 w-full text-center">
-            DRIVEN BY NATURE
-          </h2>
-        </motion.div>
-
-        {/* Slider Container */}
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={rowVariants}
-          className="w-full max-w-[1200px] mx-auto relative flex items-center"
-        >
-        
-        {/* Next Button */}
-        <button 
-          onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 md:-right-6 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#4A2F1D] border border-[#5C4033] text-[#D5B77A] flex items-center justify-center hover:bg-[#5C4033] hover:text-white transition-colors duration-300 shadow-md"
-        >
-          <ChevronRight size={24} strokeWidth={1.5} />
-        </button>
-
-        <div className="w-full pr-14 md:pr-16 overflow-hidden py-4">
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={currentIndex}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex flex-col md:flex-row items-center gap-[40px] md:gap-[50px]"
-            >
-              <div className="w-full md:w-1/2 flex items-center justify-center">
-                <div className="w-full max-w-[420px] aspect-square [perspective:1000px] group">
-                  <div className="w-full h-full relative transition-transform duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
-                    {/* Front Face (Flower) */}
-                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-[24px] overflow-hidden">
-                      <img src={current.image} alt={current.heading} className="w-full h-full object-cover" />
-                    </div>
-                    {/* Back Face (Bottle) */}
-                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[24px] overflow-hidden bg-white">
-                      <img src={current.bottleImage} alt={current.heading + " Bottle"} className="w-full h-full object-cover" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Content Right */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center max-w-[520px]">
-                <h3 className="font-serif italic font-medium text-[#1F2937] text-[52px] leading-[1.05] tracking-[-0.5px] mb-6 text-left m-0 p-0">{current.heading}</h3>
-                <p className="font-sans text-[16px] text-[#1F2937] leading-[1.7] max-w-[520px] mb-8 text-left mt-6">
-                  {current.description}
-                </p>
-                
-                <div className="flex flex-col gap-6 border-t border-gray-200 pt-8 w-full max-w-[520px]">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] tracking-[0.2em] text-gray-400 uppercase font-semibold mb-1">Extract</span>
-                    <span className="text-[13px] text-[#1F2937] font-medium font-sans">{current.extract}</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] tracking-[0.2em] text-gray-400 uppercase font-semibold mb-1">Aroma Profile</span>
-                    <span className="text-[13px] text-[#1F2937] font-medium font-sans">{current.aromaProfile}</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] tracking-[0.2em] text-gray-400 uppercase font-semibold mb-1">Source</span>
-                    <span className="text-[#1F2937] font-medium font-sans whitespace-nowrap" style={{ fontSize: 'clamp(10px, 3.5vw, 12px)', lineHeight: '1.4' }}>{current.source}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        </motion.div>
-      </div>
+    <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
+      <video
+        src="/images/journal.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
+      />
     </div>
   );
 }
 
 function FeatureSection() {
   return (
-    <div className="w-full h-[60vh] md:h-[80vh] relative overflow-hidden bg-black flex items-center justify-center">
-      <video 
-        src="/images/journal.mp4" 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        className="w-full h-full object-cover brightness-110 contrast-105"
-      />
-    </div>
+    <motion.div 
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+      className="w-full bg-transparent flex flex-col items-center justify-center px-6 md:px-16 pt-6 pb-4 md:pt-10 md:pb-6"
+    >
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 flex flex-col items-center">
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-10 h-[1px] bg-gray-300"></div>
+          <p className="text-gray-500 font-semibold text-[10px] tracking-[0.3em] uppercase">
+            Journals
+          </p>
+          <div className="w-10 h-[1px] bg-gray-300"></div>
+        </div>
+        <h2 className="text-3xl md:text-5xl font-serif italic text-gray-900 mb-6 tracking-wider leading-tight">
+          The Art of Luxury
+        </h2>
+        <p className="text-gray-600 font-medium text-[15px] leading-loose max-w-2xl mx-auto">
+          Discover the meticulous craftsmanship, unparalleled quality, and exceptional services that define the <b>ARION</b> experience. We believe that true luxury lies in the details.
+        </p>
+      </div>
+
+      {/* Icons */}
+      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 w-full mb-12 md:mb-16">
+        <Feature icon={MessageCircle} text="Concierge" />
+        <Feature icon={RefreshCcw} text="Complimentary Returns" />
+        <Feature icon={ShieldCheck} text="Authenticity Guaranteed" />
+        <Feature icon={Truck} text="Signature Packaging" />
+        <Feature icon={Plane} text="Worldwide Delivery" />
+      </div>
+
+      {/* Quote */}
+      <div className="text-center max-w-3xl mx-auto border-t border-gray-100 pt-12 md:pt-16 px-4">
+        <p className="font-serif italic text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
+          "A fragrance is the silent poetry of your soul, leaving an unforgettable trail of memories wherever you go."
+        </p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold">— The House of <b>ARION</b></p>
+      </div>
+    </motion.div>
   );
 }
 
