@@ -189,7 +189,7 @@ export default function App() {
         <section ref={el => { sectionsRef.current[0] = el; }} className="h-screen w-full relative z-10">
           <HeroSection />
         </section>
-        <section ref={el => { sectionsRef.current[1] = el; }} className="min-h-screen w-full relative z-20">
+        <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
           <ProductSection />
         </section>
         <section ref={el => { sectionsRef.current[2] = el; }} className="w-full relative z-30 bg-[#FDFBF7]">
@@ -494,9 +494,9 @@ function ProductSection() {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
       id="our-collection" 
-      className="w-full h-full bg-[#FDFBF7] flex flex-col items-center relative py-16 md:py-24 overflow-hidden"
+      className="w-full h-full bg-[#FDFBF7] flex flex-col items-center relative py-12 md:py-16 overflow-hidden"
     >
-      <div className="text-center mb-12 md:mb-16 flex flex-col items-center w-full px-6">
+      <div className="text-center mb-8 md:mb-12 flex flex-col items-center w-full px-6">
         <div className="flex items-center gap-4 mb-4">
           <div className="w-10 h-[1px] bg-gray-300"></div>
           <p className="text-gray-500 font-['Montserrat'] font-extrabold text-[10px] md:text-xs tracking-[0.2em] uppercase">
@@ -504,7 +504,7 @@ function ProductSection() {
           </p>
           <div className="w-10 h-[1px] bg-gray-300"></div>
         </div>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4">
           THE COLLECTION
         </h2>
       </div>
