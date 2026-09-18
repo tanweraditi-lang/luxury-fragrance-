@@ -311,15 +311,15 @@ function FeatureSection() {
       <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 flex flex-col items-center">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-10 h-[1px] bg-gray-300"></div>
-          <p className="text-gray-500 font-semibold text-[10px] tracking-[0.3em] uppercase">
+          <p className="text-gray-500 font-['Montserrat'] font-extrabold text-[10px] tracking-[0.3em] uppercase">
             Journals
           </p>
           <div className="w-10 h-[1px] bg-gray-300"></div>
         </div>
-        <h2 className="text-3xl md:text-5xl font-serif italic text-gray-900 mb-6 tracking-wider leading-tight">
-          The Art of Luxury
+        <h2 className="text-3xl md:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-6 leading-tight">
+          THE ART OF LUXURY
         </h2>
-        <p className="text-gray-600 font-medium text-[15px] leading-loose max-w-2xl mx-auto">
+        <p className="text-gray-800 font-['Montserrat'] font-bold text-[13px] md:text-[15px] leading-loose max-w-2xl mx-auto uppercase tracking-wider">
           Discover the meticulous craftsmanship, unparalleled quality, and exceptional services that define the <b>ARION</b> experience. We believe that true luxury lies in the details.
         </p>
       </div>
@@ -335,10 +335,10 @@ function FeatureSection() {
 
       {/* Quote */}
       <div className="text-center max-w-3xl mx-auto border-t border-gray-100 pt-12 md:pt-16 px-4">
-        <p className="font-serif italic text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
-          "A fragrance is the silent poetry of your soul, leaving an unforgettable trail of memories wherever you go."
+        <p className="font-['Montserrat'] font-extrabold uppercase text-xl md:text-2xl text-black leading-relaxed tracking-[0.08em] mb-6">
+          "A FRAGRANCE IS THE SILENT POETRY OF YOUR SOUL, LEAVING AN UNFORGETTABLE TRAIL OF MEMORIES WHEREVER YOU GO."
         </p>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold">— The House of <b>ARION</b></p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-['Montserrat'] font-extrabold">— THE HOUSE OF ARION</p>
       </div>
     </motion.div>
   );
@@ -366,7 +366,7 @@ function PerfumeMarquee() {
         style={{ animation: 'marqueeText 80s linear infinite' }}
       >
         {[1, 2].map((half) => (
-          <div key={half} className="flex shrink-0 items-center font-serif italic font-semibold text-[18px] md:text-[20px] lg:text-[26px] tracking-[0.06em]">
+          <div key={half} className="flex shrink-0 items-center font-['Montserrat'] font-extrabold text-[18px] md:text-[20px] lg:text-[26px] tracking-[0.08em] uppercase text-black">
             {set.map((item, i) => (
               <span key={i} className="flex items-center">
                 <span className="ml-[35px] md:ml-[40px]" style={{ color: item.color }}>{item.name}</span>
@@ -432,12 +432,12 @@ function ProductSection() {
       <div className="text-center mb-12 md:mb-16 flex flex-col items-center w-full px-6">
         <div className="flex items-center gap-4 mb-4">
           <div className="w-10 h-[1px] bg-gray-300"></div>
-          <p className="text-gray-500 font-semibold text-[10px] md:text-xs tracking-[0.2em] uppercase">
+          <p className="text-gray-500 font-['Montserrat'] font-extrabold text-[10px] md:text-xs tracking-[0.2em] uppercase">
             EXCLUSIVE COLLECTION
           </p>
           <div className="w-10 h-[1px] bg-gray-300"></div>
         </div>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium italic text-gray-900 tracking-wide mb-4 uppercase">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4">
           THE COLLECTION
         </h2>
       </div>
@@ -511,9 +511,9 @@ function ProductCard({ item }: { item: any }) {
       
       {/* Product Details */}
       <div className="flex flex-col items-center text-center w-full px-2">
-        <h3 className="font-serif italic text-2xl md:text-3xl text-gray-900 mb-1 transition-colors">{item.name}</h3>
-        <div className="text-lg font-semibold text-gray-900 mb-2 tracking-widest">{item.price}</div>
-        <p className="font-sans text-[14px] text-gray-500 mb-4 max-w-[280px] leading-[1.6]">
+        <h3 className="font-['Montserrat'] font-extrabold uppercase text-2xl md:text-3xl text-black tracking-[0.08em] mb-1 transition-colors">{item.name}</h3>
+        <div className="text-lg font-['Montserrat'] font-extrabold text-black mb-2 tracking-[0.08em] uppercase">{item.price}</div>
+        <p className="font-['Montserrat'] font-bold text-[12px] md:text-[14px] text-gray-700 uppercase tracking-wider mb-4 max-w-[280px] leading-[1.6]">
           {item.description}
         </p>
         
@@ -532,9 +532,9 @@ function Feature({ icon: Icon, text }: { icon: any, text: string }) {
     <div className="flex flex-col items-center gap-6 text-center max-w-[140px] group cursor-pointer transition-all duration-[400ms] ease-out hover:-translate-y-2">
       <div className="w-24 h-24 rounded-full bg-[#fdfbf7] border border-gray-100 flex items-center justify-center text-gray-700 transition-all duration-[400ms] ease-out shadow-sm group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.08)] group-hover:border-pink-200 group-hover:text-pink-900 group-hover:bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-pink-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms]"></div>
-        <Icon size={30} strokeWidth={1} className="relative z-10 transition-transform duration-[400ms] group-hover:scale-[1.05]" />
+        <Icon size={30} strokeWidth={2} className="relative z-10 transition-transform duration-[400ms] group-hover:scale-[1.05]" />
       </div>
-      <p className="text-[11px] font-semibold text-[#1A1A1A] leading-relaxed uppercase tracking-widest group-hover:text-gray-900 transition-colors duration-[400ms]">{text}</p>
+      <p className="text-[11px] font-['Montserrat'] font-extrabold text-[#1A1A1A] leading-relaxed uppercase tracking-[0.08em] group-hover:text-black transition-colors duration-[400ms]">{text}</p>
     </div>
   );
 }
@@ -547,8 +547,8 @@ function FooterSection() {
 
         {/* Top Area */}
         <div className="text-center max-w-3xl mb-8 fade-up-element">
-          <h2 className="text-[52px] md:text-[64px] font-serif font-bold italic text-white mb-3 tracking-wide leading-tight">Leave Your Signature.</h2>
-          <p className="text-gray-400 font-medium text-[18px] md:text-[20px] leading-[1.6]">
+          <h2 className="text-[40px] md:text-[52px] font-['Montserrat'] font-extrabold text-white uppercase tracking-[0.08em] mb-3 leading-tight">LEAVE YOUR SIGNATURE.</h2>
+          <p className="text-gray-300 font-['Montserrat'] font-bold text-[14px] md:text-[16px] uppercase tracking-wider leading-[1.6]">
             Discover timeless fragrances crafted to become a part of your story. Experience elegance that stays long after the moment fades.
           </p>
         </div>
@@ -568,16 +568,16 @@ function FooterSection() {
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 mb-8 fade-up-element">
           {/* Column 1 */}
           <div className="flex flex-col md:items-start items-center text-center md:text-left">
-            <h3 className="font-sans text-[28px] md:text-[32px] font-medium tracking-[0.25em] uppercase text-[#D5B77A] mb-3">ARION</h3>
-            <p className="text-gray-400 text-[16px] md:text-[18px] leading-[1.6] max-w-[240px]">
+            <h3 className="font-['Montserrat'] font-extrabold text-[28px] md:text-[32px] tracking-[0.25em] uppercase text-[#D5B77A] mb-3">ARION</h3>
+            <p className="text-gray-300 font-['Montserrat'] font-bold text-[12px] md:text-[14px] uppercase tracking-wider leading-[1.6] max-w-[240px]">
               The epitome of modern luxury fragrance, crafted with passion and mystery.
             </p>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col md:items-start items-center text-center md:text-left">
-            <h4 className="text-[20px] md:text-[22px] font-semibold text-white mb-4 tracking-wide">Navigation</h4>
-            <ul className="flex flex-col gap-3 text-[16px] md:text-[18px] text-gray-400">
+            <h4 className="text-[20px] md:text-[22px] font-['Montserrat'] font-extrabold uppercase text-white mb-4 tracking-[0.08em]">NAVIGATION</h4>
+            <ul className="flex flex-col gap-3 text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-wider text-gray-400">
               <li><button onClick={() => window.scrollTo(0, 0)} className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Collections</button></li>
               <li><button onClick={() => window.scrollTo(0, 0)} className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Our Story</button></li>
               <li><button onClick={() => window.scrollTo(0, 0)} className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Journals</button></li>
@@ -587,8 +587,8 @@ function FooterSection() {
 
           {/* Column 3 */}
           <div className="flex flex-col md:items-start items-center text-center md:text-left">
-            <h4 className="text-[20px] md:text-[22px] font-semibold text-white mb-4 tracking-wide">Support</h4>
-            <ul className="flex flex-col gap-3 text-[16px] md:text-[18px] text-gray-400">
+            <h4 className="text-[20px] md:text-[22px] font-['Montserrat'] font-extrabold uppercase text-white mb-4 tracking-[0.08em]">SUPPORT</h4>
+            <ul className="flex flex-col gap-3 text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-wider text-gray-400">
               <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Shipping</button></li>
               <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Returns</button></li>
               <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Privacy Policy</button></li>
@@ -599,8 +599,8 @@ function FooterSection() {
 
           {/* Column 4 */}
           <div className="flex flex-col md:items-start items-center text-center md:text-left">
-            <h4 className="text-[20px] md:text-[22px] font-semibold text-white mb-4 tracking-wide">Contact</h4>
-            <ul className="flex flex-col gap-3 text-[16px] md:text-[18px] text-gray-400 mb-4">
+            <h4 className="text-[20px] md:text-[22px] font-['Montserrat'] font-extrabold uppercase text-white mb-4 tracking-[0.08em]">CONTACT</h4>
+            <ul className="flex flex-col gap-3 text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-wider text-gray-400 mb-4">
               <li><a href="mailto:support@arion.com" className="hover:text-white transition-colors duration-300 flex items-center gap-2"><Mail size={18} strokeWidth={1.5} /> support@<b>arion</b>.com</a></li>
               <li><a href="tel:+910000000000" className="hover:text-white transition-colors duration-300 flex items-center gap-2"><Phone size={18} strokeWidth={1.5} /> +91 XXXXX XXXXX</a></li>
             </ul>
@@ -614,10 +614,10 @@ function FooterSection() {
 
         {/* Bottom Bar */}
         <div className="w-full pt-4 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 fade-up-element">
-          <p className="text-[15px] md:text-[16px] tracking-wider text-gray-600 font-medium">
+          <p className="text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-[0.08em] text-gray-500">
             &copy; 2026 <b>ARION</b>. All Rights Reserved.
           </p>
-          <p className="text-[15px] md:text-[16px] tracking-wider text-gray-600 font-medium">
+          <p className="text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-[0.08em] text-gray-500">
             Made with elegance.
           </p>
         </div>
