@@ -164,7 +164,7 @@ export default function App() {
              <Search size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity" />
           </div>
           
-          <div className="text-[26px] md:text-[30px] font-['Montserrat'] tracking-[0.2em] font-bold antialiased uppercase flex-1 text-center">
+          <div className="text-[26px] md:text-[30px] font-['Montserrat'] tracking-[0.2em] font-bold antialiased uppercase flex-1 text-center" style={{ color: '#D4AF37' }}>
             ARION
           </div>
           
