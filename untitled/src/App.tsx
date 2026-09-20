@@ -306,7 +306,7 @@ function IngredientsSection() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute left-20 md:left-32 z-10 flex items-center pointer-events-none max-w-lg"
           >
-            <h2 className="text-black font-['Montserrat'] font-extrabold uppercase text-xl md:text-3xl leading-tight tracking-[0.08em] drop-shadow-xl">
+            <h2 className="text-[#D4AF37] font-['Montserrat'] font-extrabold uppercase text-xl md:text-3xl leading-tight tracking-[0.08em] drop-shadow-xl">
               ELEVATE EVERY DRIVE. <br/>THE LUXURY CAR PERFUME.
             </h2>
           </motion.div>
