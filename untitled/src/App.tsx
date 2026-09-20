@@ -558,44 +558,62 @@ function ProductSection() {
 
 function ProductCard({ item }: { item: any }) {
   return (
-    <div className="w-full max-w-[320px] flex flex-col items-center group cursor-pointer relative transition-all duration-500 hover:-translate-y-2">
-      {/* Visual Presentation Area - Vertical 9:16 Video Player */}
-      <div className="w-full aspect-[9/16] rounded-[24px] relative overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-500 bg-gray-900">
+    <div className="w-full max-w-[320px] flex flex-col items-center group cursor-pointer relative transition-all duration-500 hover:-translate-y-2 perspective-[1000px]">
+      
+      {/* Flip Container */}
+      <div className="w-full aspect-[9/16] relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] mb-2">
         
-        {/* Auto-playing Background Video */}
-        {item.video ? (
-          <video 
-            src={item.video} 
-            poster={item.image}
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-          />
-        ) : (
+        {/* Front Face - Vertical 9:16 Video Player */}
+        <div className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]">
+          {/* Auto-playing Background Video */}
+          {item.video ? (
+            <video 
+              src={item.video} 
+              poster={item.image}
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover" 
+            />
+          ) : (
+            <div className="absolute inset-0 w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
+               <span className="text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Video Missing</span>
+            </div>
+          )}
+          
+          {/* Soft Inner Shadow/Glow overlay */}
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 pointer-events-none z-10"></div>
+          
+          {/* Glowing Letter Overlay */}
+          {item.letter && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+              <div className="relative flex items-center justify-center">
+                {/* Highlighted Bold Letter without the excessive glow */}
+                <span className="relative text-3xl md:text-4xl font-['Montserrat'] font-black uppercase text-[#D4AF37]">
+                  {item.letter}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Back Face - Perfume Bottle Image */}
+        <div 
+          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex items-center justify-center"
+          style={{ background: item.bgGradient || '#fff' }}
+        >
+          {/* Soft Inner Shadow overlay */}
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
+          
           <img 
             src={item.image} 
             alt={item.name} 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
           />
-        )}
-        
-        {/* Soft Inner Shadow/Glow overlay */}
-        <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
-        
-        {/* Glowing Letter Overlay */}
-        {item.letter && (
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-            <div className="relative flex items-center justify-center">
-              {/* Highlighted Bold Letter without the excessive glow */}
-              <span className="relative text-3xl md:text-4xl font-['Montserrat'] font-black uppercase text-[#D4AF37]">
-                {item.letter}
-              </span>
-            </div>
-          </div>
-        )}
+        </div>
+
       </div>
       
       {/* Product Name Below Video */}
