@@ -186,7 +186,7 @@ export default function App() {
 
       {/* Main Content Area - Continuous Cinematic Scroll */}
       <div className="w-full bg-[#FDFBF7] flex flex-col relative">
-        <section ref={el => { sectionsRef.current[0] = el; }} className="h-screen w-full relative z-10">
+        <section ref={el => { sectionsRef.current[0] = el; }} className="min-h-screen w-full relative z-10">
           <HeroSection />
         </section>
         <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
