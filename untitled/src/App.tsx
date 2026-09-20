@@ -571,21 +571,16 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
       className="w-full max-w-[320px] flex flex-col items-center cursor-pointer relative transition-all duration-500 hover:-translate-y-2 perspective-[1000px]"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
-      onClick={() => setIsFlipped(!isFlipped)}
     >
       
-      {/* Invisible Overlay to strictly capture touch/click events on mobile without video interference */}
-      <div className="absolute inset-0 z-50 w-full h-full" onClick={(e) => {
-        // Stop event from bubbling to prevent double firing
-        e.stopPropagation();
-        setIsFlipped(!isFlipped);
-      }}></div>
-
       {/* Flip Container */}
       <div className={`w-full aspect-[9/16] relative transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} mb-2`}>
         
         {/* Front Face - Vertical 9:16 Video Player */}
-        <div className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]">
+        <div 
+          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]"
+          onClick={() => setIsFlipped(true)}
+        >
           {/* Auto-playing Background Video */}
           {item.video ? (
             <video 
@@ -624,6 +619,7 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
         <div 
           className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center relative"
           style={{ background: item.bgGradient || '#fff' }}
+          onClick={() => setIsFlipped(false)}
         >
           {/* Soft Inner Shadow overlay */}
           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
