@@ -619,7 +619,7 @@ function ProductCard({ item }: { item: any }) {
 
         {/* Back Face - Perfume Bottle Image */}
         <div 
-          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex items-center justify-center"
+          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center relative"
           style={{ background: item.bgGradient || '#fff' }}
         >
           {/* Soft Inner Shadow overlay */}
@@ -629,11 +629,26 @@ function ProductCard({ item }: { item: any }) {
             <img 
               src={item.image} 
               alt={item.name} 
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 z-0"
             />
           ) : (
-            <div className="text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Coming Soon</div>
+            <div className="absolute inset-0 z-0 flex items-center justify-center text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Coming Soon</div>
           )}
+          
+          {/* Price and Add to Cart Overlay */}
+          <div className="absolute bottom-0 left-0 w-full pt-20 pb-6 px-6 flex flex-col items-center justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
+            <div className="text-2xl md:text-3xl font-['Montserrat'] font-extrabold text-white mb-4 tracking-[0.08em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              {item.price}
+            </div>
+            <button 
+              className="w-full max-w-[220px] h-[44px] rounded-full bg-[#D4AF37] text-white font-bold text-[12px] md:text-[13px] uppercase tracking-widest hover:bg-[#E8C65A] active:scale-95 transition-all duration-300 border-none flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,0,0,0.25)] relative z-30"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevents the card from flipping back when clicking the button
+              }}
+            >
+              <ShoppingBag size={16} /> ADD TO CART
+            </button>
+          </div>
         </div>
 
       </div>
