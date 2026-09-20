@@ -210,7 +210,7 @@ export default function App() {
 }
 
 const heroImages = [
-  "/images/zero.hero.mp4"
+  "/images/remove watermark.mp4"
 ];
 
 function HeroSection() {
