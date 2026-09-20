@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, ChevronLeft, Search, ShoppingBag, User, Droplet, Wind, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, ArrowRight, MessageCircle, RefreshCcw, ShieldCheck, Truck, Plane, Leaf, Car, Shield } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Search, ShoppingBag, User, Droplet, Wind, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, ArrowRight, MessageCircle, RefreshCcw, ShieldCheck, Truck, Plane, Leaf, Car, Shield, Play } from 'lucide-react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -449,13 +449,15 @@ function PerfumeMarquee() {
 
 const collectionData = [
   {
-    name: "Jasmine",
+    name: "Rose Bottle",
     price: "₹999",
     description: "Pure and delicate white floral scent with a calm elegance.",
     family: "Floral",
     image: "/images/bottle 3.jpeg",
+    video: "/images/our collection 1.mp4",
     bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
     boxColor: "#FAF7F2",
+    letter: "A",
   },
   {
     name: "Lavender",
@@ -463,26 +465,43 @@ const collectionData = [
     description: "A deeply relaxing and aromatic herbaceous lavender profile.",
     family: "Aromatic",
     image: "/images/bottle 4.jpeg", 
+    video: "/images/our collection 2.mp4",
     bgGradient: "linear-gradient(135deg, #F4F0FF 0%, #D4C9ED 100%)",
     boxColor: "#E2D8F2",
+    letter: "R",
   },
   {
-    name: "Red Rose",
+    name: "Dahlia",
     price: "₹1999",
     description: "Rich, velvety romance captured in a deep floral bouquet.",
     family: "Floral Woody",
     image: "/images/bottle 1.jpeg", 
+    video: "/images/our collection 3.mp4",
     bgGradient: "linear-gradient(135deg, #9A3652 0%, #5E162A 100%)",
     boxColor: "#6B1A2C",
+    letter: "I",
   },
   {
-    name: "Dahlia",
+    name: "Ocean Blue",
     price: "₹1499",
     description: "Modern, sophisticated soft floral with powdery freshness.",
     family: "Soft Floral",
     image: "/images/bottle 2.jpeg", 
+    video: "/images/our collection 4.mp4",
     bgGradient: "linear-gradient(135deg, #F9D2C2 0%, #E0A6B8 100%)",
     boxColor: "#EBBCC9",
+    letter: "O",
+  },
+  {
+    name: "Jasmine",
+    price: "₹2499",
+    description: "Deep, mysterious and earthy scent for the bold.",
+    family: "Woody",
+    image: "/images/frag 2.png", 
+    video: "/images/our collection 5.mp4",
+    bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
+    boxColor: "#FAF7F2",
+    letter: "N",
   }
 ];
 
@@ -509,33 +528,11 @@ function ProductSection() {
         </h2>
       </div>
 
-      <div className="w-full overflow-hidden pb-12 relative group">
-        <style>{`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 20s linear infinite;
-          }
-          .animate-marquee:hover {
-            animation-play-state: paused;
-          }
-        `}</style>
-        
-        <div className="animate-marquee">
-          <div className="flex gap-6 md:gap-10 px-3 md:px-5">
-            {collectionData.map((item, idx) => (
-              <ProductCard key={idx} item={item} />
-            ))}
-          </div>
-          <div className="flex gap-6 md:gap-10 px-3 md:px-5">
-            {collectionData.map((item, idx) => (
-              <ProductCard key={`dup-${idx}`} item={item} />
-            ))}
-          </div>
+      <div className="w-full max-w-[1600px] px-6 md:px-12 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 w-full justify-items-center">
+          {collectionData.map((item, idx) => (
+            <ProductCard key={idx} item={item} />
+          ))}
         </div>
       </div>
 
@@ -561,34 +558,51 @@ function ProductSection() {
 
 function ProductCard({ item }: { item: any }) {
   return (
-    <div className="w-[300px] md:w-[340px] shrink-0 flex flex-col items-center group cursor-pointer relative transition-all duration-500 hover:-translate-y-2">
-      {/* Visual Presentation Area - Just the Image */}
-      <div className="w-full aspect-[4/3] rounded-[24px] relative overflow-hidden flex items-center justify-center mb-6 shadow-sm group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-500 bg-white">
+    <div className="w-full max-w-[320px] flex flex-col items-center group cursor-pointer relative transition-all duration-500 hover:-translate-y-2">
+      {/* Visual Presentation Area - Vertical 9:16 Video Player */}
+      <div className="w-full aspect-[9/16] rounded-[24px] relative overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-500 bg-gray-900">
         
-        {/* The Landscape Photo */}
-        <img 
-          src={item.image} 
-          alt={item.name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-        />
+        {/* Auto-playing Background Video */}
+        {item.video ? (
+          <video 
+            src={item.video} 
+            poster={item.image}
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+          />
+        ) : (
+          <img 
+            src={item.image} 
+            alt={item.name} 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+          />
+        )}
         
-        {/* Soft Inner Shadow/Glow overlay to make it look premium */}
-        <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[24px]"></div>
+        {/* Soft Inner Shadow/Glow overlay */}
+        <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
+        
+        {/* Glowing Letter Overlay */}
+        {item.letter && (
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+            <div className="relative flex items-center justify-center">
+              {/* Highlighted Bold Letter without the excessive glow */}
+              <span className="relative text-3xl md:text-4xl font-['Montserrat'] font-black uppercase text-[#D4AF37]">
+                {item.letter}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
       
-      {/* Product Details */}
-      <div className="flex flex-col items-center text-center w-full px-2">
-        <h3 className="font-['Montserrat'] font-extrabold uppercase text-2xl md:text-3xl text-black tracking-[0.08em] mb-1 transition-colors">{item.name}</h3>
-        <div className="text-lg font-['Montserrat'] font-extrabold text-black mb-2 tracking-[0.08em] uppercase">{item.price}</div>
-        <p className="font-['Montserrat'] font-bold text-[12px] md:text-[14px] text-gray-700 uppercase tracking-wider mb-4 max-w-[280px] leading-[1.6]">
-          {item.description}
-        </p>
-        
-        <div className="flex flex-wrap justify-center gap-2 mt-2">
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-[10px] uppercase tracking-widest text-gray-600 font-semibold">{item.family}</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-[10px] uppercase tracking-widest text-gray-600 font-semibold">Long Lasting</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-[10px] uppercase tracking-widest text-gray-600 font-semibold">Premium</span>
-        </div>
+      {/* Product Name Below Video */}
+      <div className="mt-4 text-center">
+        <h3 className="font-['Montserrat'] font-extrabold uppercase text-sm md:text-base tracking-[0.2em] text-black">
+          {item.name}
+        </h3>
       </div>
     </div>
   );
