@@ -34,6 +34,7 @@ const perfumeTropez = "/secret.png";
 export default function App() {
   const [activeSection, setActiveSection] = useState(0);
   const [isNavHovered, setIsNavHovered] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const lenisRef = useRef<Lenis | null>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
@@ -172,7 +173,9 @@ export default function App() {
             <User size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity" />
             <div className="relative cursor-pointer hover:opacity-70 transition-opacity">
               <ShoppingBag size={22} strokeWidth={1.5} />
-              <span className="absolute -top-1.5 -right-2 bg-white border border-gray-200 text-black text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-2 bg-white border border-gray-200 text-black text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">{cartCount}</span>
+              )}
             </div>
           </div>
         </div>
@@ -187,10 +190,10 @@ export default function App() {
       {/* Main Content Area - Continuous Cinematic Scroll */}
       <div className="w-full bg-[#FDFBF7] flex flex-col relative">
         <section ref={el => { sectionsRef.current[0] = el; }} className="min-h-screen w-full relative z-10">
-          <HeroSection />
+          <HeroSection onShopClick={() => scrollToSection(1)} />
         </section>
         <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
-          <ProductSection />
+          <ProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
         <section ref={el => { sectionsRef.current[2] = el; }} className="w-full relative z-30 bg-[#FDFBF7]">
           <IngredientsSection />
@@ -213,7 +216,7 @@ const heroImages = [
   "/images/remove watermark.mp4"
 ];
 
-function HeroSection() {
+function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
   return (
     <div className="relative w-full min-h-[100vh] md:h-[100vh] flex flex-col md:flex-row md:items-center overflow-hidden bg-[#FDFBF7] md:bg-gray-900">
       <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900 pt-16 md:pt-0">
@@ -273,7 +276,7 @@ function HeroSection() {
             </div>
           </div>
 
-          <button className="mt-8 h-[48px] w-fit px-[32px] py-[14px] rounded-full bg-[#D4AF37] text-[#111111] font-bold text-[15px] uppercase tracking-[2px] cursor-pointer hover:bg-[#E8C65A] hover:scale-105 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)] active:scale-[0.96] transition-all duration-[350ms] ease-out flex items-center justify-center border-none">
+          <button onClick={onShopClick} className="mt-8 h-[48px] w-fit px-[32px] py-[14px] rounded-full bg-[#D4AF37] text-[#111111] font-bold text-[15px] uppercase tracking-[2px] cursor-pointer hover:bg-[#E8C65A] hover:scale-105 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)] active:scale-[0.96] transition-all duration-[350ms] ease-out flex items-center justify-center border-none">
             SHOP NOW
           </button>
         </div>
@@ -505,7 +508,7 @@ const collectionData = [
   }
 ];
 
-function ProductSection() {
+function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 100 }}
@@ -533,7 +536,7 @@ function ProductSection() {
         <div className="flex xl:grid xl:grid-cols-5 gap-6 md:gap-8 w-full overflow-x-auto xl:overflow-x-visible snap-x snap-mandatory px-6 md:px-12 hide-scrollbar pb-8 xl:pb-0 justify-start xl:justify-items-center">
           {collectionData.map((item, idx) => (
             <div key={idx} className="snap-center shrink-0 w-[280px] sm:w-[320px] xl:w-full flex justify-center">
-              <ProductCard item={item} />
+              <ProductCard item={item} onAddToCart={onAddToCart} />
             </div>
           ))}
         </div>
@@ -559,7 +562,7 @@ function ProductSection() {
   );
 }
 
-function ProductCard({ item }: { item: any }) {
+function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => void }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // Desktop hover triggers flip. Mobile tap toggles flip.
@@ -644,6 +647,7 @@ function ProductCard({ item }: { item: any }) {
               className="w-full max-w-[220px] h-[44px] rounded-full bg-[#D4AF37] text-white font-bold text-[12px] md:text-[13px] uppercase tracking-widest hover:bg-[#E8C65A] active:scale-95 transition-all duration-300 border-none flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,0,0,0.25)] relative z-30"
               onClick={(e) => {
                 e.stopPropagation(); // Prevents the card from flipping back when clicking the button
+                if (onAddToCart) onAddToCart();
               }}
             >
               <ShoppingBag size={16} /> ADD TO CART
