@@ -528,10 +528,13 @@ function ProductSection() {
         </h2>
       </div>
 
-      <div className="w-full max-w-[1600px] px-6 md:px-12 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 w-full justify-items-center">
+      <div className="w-full max-w-[1600px] pb-12 overflow-hidden">
+        {/* Mobile: Horizontal scroll, Desktop: 5-column grid */}
+        <div className="flex xl:grid xl:grid-cols-5 gap-6 md:gap-8 w-full overflow-x-auto xl:overflow-x-visible snap-x snap-mandatory px-6 md:px-12 hide-scrollbar pb-8 xl:pb-0 justify-start xl:justify-items-center">
           {collectionData.map((item, idx) => (
-            <ProductCard key={idx} item={item} />
+            <div key={idx} className="snap-center shrink-0 w-[280px] sm:w-[320px] xl:w-full flex justify-center">
+              <ProductCard item={item} />
+            </div>
           ))}
         </div>
       </div>
