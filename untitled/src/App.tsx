@@ -453,7 +453,7 @@ const collectionData = [
     price: "₹999",
     description: "Pure and delicate white floral scent with a calm elegance.",
     family: "Floral",
-    image: "/images/bottle 3.jpeg",
+    image: "/images/bottle 1.jpeg",
     video: "/images/our collection 1.mp4",
     bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
     boxColor: "#FAF7F2",
@@ -475,7 +475,7 @@ const collectionData = [
     price: "₹1999",
     description: "Rich, velvety romance captured in a deep floral bouquet.",
     family: "Floral Woody",
-    image: "/images/bottle 1.jpeg", 
+    image: "/images/bottle 2.jpeg", 
     video: "/images/our collection 3.mp4",
     bgGradient: "linear-gradient(135deg, #9A3652 0%, #5E162A 100%)",
     boxColor: "#6B1A2C",
@@ -486,9 +486,9 @@ const collectionData = [
     price: "₹1499",
     description: "Modern, sophisticated soft floral with powdery freshness.",
     family: "Soft Floral",
-    image: "/images/bottle 2.jpeg", 
+    image: "", 
     video: "/images/our collection 4.mp4",
-    bgGradient: "linear-gradient(135deg, #F9D2C2 0%, #E0A6B8 100%)",
+    bgGradient: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
     boxColor: "#EBBCC9",
     letter: "O",
   },
@@ -497,7 +497,7 @@ const collectionData = [
     price: "₹2499",
     description: "Deep, mysterious and earthy scent for the bold.",
     family: "Woody",
-    image: "/images/frag 2.png", 
+    image: "/images/bottle 3.jpeg", 
     video: "/images/our collection 5.mp4",
     bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
     boxColor: "#FAF7F2",
@@ -607,11 +607,15 @@ function ProductCard({ item }: { item: any }) {
           {/* Soft Inner Shadow overlay */}
           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
           
-          <img 
-            src={item.image} 
-            alt={item.name} 
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-          />
+          {item.image ? (
+            <img 
+              src={item.image} 
+              alt={item.name} 
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          ) : (
+            <div className="text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Coming Soon</div>
+          )}
         </div>
 
       </div>
