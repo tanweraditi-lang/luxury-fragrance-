@@ -288,7 +288,7 @@ function IngredientsSection() {
   return (
     <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
       <video
-        src="/images/journal.mp4"
+        src="/images/journal 2.0.mp4"
         autoPlay
         loop
         muted
