@@ -557,11 +557,18 @@ function ProductSection() {
 }
 
 function ProductCard({ item }: { item: any }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
   return (
-    <div className="w-full max-w-[320px] flex flex-col items-center group cursor-pointer relative transition-all duration-500 hover:-translate-y-2 perspective-[1000px]">
+    <div 
+      className="w-full max-w-[320px] flex flex-col items-center cursor-pointer relative transition-all duration-500 hover:-translate-y-2 perspective-[1000px]"
+      onClick={() => setIsFlipped(!isFlipped)}
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
+    >
       
       {/* Flip Container */}
-      <div className="w-full aspect-[9/16] relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] mb-2">
+      <div className={`w-full aspect-[9/16] relative transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} mb-2`}>
         
         {/* Front Face - Vertical 9:16 Video Player */}
         <div className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]">
