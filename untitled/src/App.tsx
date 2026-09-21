@@ -803,9 +803,9 @@ function EcommerceProductCard({ item, onAddToCart }: { item: any; onAddToCart?: 
       </div>
 
       {/* Image Area */}
-      <div className="w-full aspect-square bg-[#F8F8F8] flex items-center justify-center p-6 relative">
+      <div className="w-full aspect-square bg-[#F8F8F8] flex items-center justify-center relative overflow-hidden">
         {item.image ? (
-          <img src={item.image} alt={item.name} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+          <img src={item.image} alt={item.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (
           <div className="text-gray-400 border-2 border-dashed border-gray-300 w-full h-full flex flex-col items-center justify-center">
             <span className="text-xs font-semibold tracking-widest text-gray-400">PERFUME IMAGE</span>
