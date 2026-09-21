@@ -195,6 +195,9 @@ export default function App() {
         <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
           <ProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
+        <section className="w-full relative z-20 bg-[#FDFBF7] py-12 md:py-24">
+          <EcommerceProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
+        </section>
         <section ref={el => { sectionsRef.current[2] = el; }} className="w-full relative z-30 bg-[#FDFBF7]">
           <IngredientsSection />
         </section>
@@ -760,5 +763,90 @@ function FooterSection() {
 
       </div>
     </footer>
+  );
+}
+
+function EcommerceProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
+  return (
+    <div className="w-full flex flex-col items-center">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 flex flex-col items-center px-6">
+        <h2 className="text-3xl md:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4 mt-8 md:mt-0">
+          THE CLASSIC COLLECTION
+        </h2>
+        <div className="w-16 h-1 bg-black mb-6"></div>
+        <p className="text-gray-600 font-['Montserrat'] text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+          Explore our signature range of luxury perfumes, presented in their purest form.
+        </p>
+      </div>
+
+      <div className="flex xl:grid xl:grid-cols-5 gap-6 md:gap-8 w-full overflow-x-auto xl:overflow-x-visible snap-x snap-mandatory px-6 md:px-12 hide-scrollbar pb-8 xl:pb-0 justify-start xl:justify-items-center max-w-[1500px] mx-auto">
+        {collectionData.map((item, idx) => (
+          <div key={idx} className="snap-center shrink-0 w-[280px] xl:w-full flex justify-center">
+            <EcommerceProductCard item={item} onAddToCart={onAddToCart} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EcommerceProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => void }) {
+  const currentPriceNum = parseInt(item.price.replace(/[^0-9]/g, '')) || 1499;
+  const oldPriceNum = Math.floor(currentPriceNum * 1.25); // 25% original markup
+
+  return (
+    <div className="w-[280px] bg-white border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative flex flex-col group overflow-hidden">
+      
+      {/* Bestseller Badge */}
+      <div className="absolute top-4 left-4 bg-[#3B82F6] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider z-10">
+        BESTSELLER
+      </div>
+
+      {/* Image Area */}
+      <div className="w-full aspect-square bg-[#F8F8F8] flex items-center justify-center p-6 relative">
+        {item.image ? (
+          <img src={item.image} alt={item.name} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+        ) : (
+          <div className="text-gray-400 border-2 border-dashed border-gray-300 w-full h-full flex flex-col items-center justify-center">
+            <span className="text-xs font-semibold tracking-widest text-gray-400">PERFUME IMAGE</span>
+          </div>
+        )}
+      </div>
+
+      {/* Content Area */}
+      <div className="p-5 flex flex-col items-center text-center">
+        <h3 className="text-black font-bold text-[16px] leading-tight mb-1 font-['Montserrat'] line-clamp-2 h-10">
+          {item.name} Eau de Parfum for Women
+        </h3>
+        <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-3">
+          LUXURY FRAGRANCE
+        </p>
+
+        {/* Rating */}
+        <div className="flex items-center gap-1 mb-4">
+          <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <span className="text-black font-semibold text-sm">(4.8)</span>
+        </div>
+
+        {/* Price */}
+        <div className="flex flex-col items-center mb-5">
+          <div className="flex items-end gap-2">
+            <span className="text-2xl font-extrabold text-black font-['Montserrat']">{item.price}</span>
+            <span className="text-sm text-gray-400 line-through mb-1">₹{oldPriceNum}</span>
+          </div>
+          <span className="text-[#16A34A] text-xs font-bold mt-1">SAVE ₹{oldPriceNum - currentPriceNum}</span>
+        </div>
+
+        {/* Add to Cart Button */}
+        <button 
+          onClick={(e) => { e.stopPropagation(); if (onAddToCart) onAddToCart(); }}
+          className="w-full bg-black text-white py-3 font-bold uppercase text-[13px] tracking-widest hover:bg-gray-800 transition-colors border-none cursor-pointer"
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
   );
 }
