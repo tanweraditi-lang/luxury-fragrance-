@@ -540,7 +540,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
-      <div className="text-center mb-8 md:mb-12 flex flex-col items-center w-full px-6 relative z-10">
+      <div className="text-center mb-24 md:mb-32 flex flex-col items-center w-full px-6 relative z-10 -mt-6">
         <div className="flex items-center gap-4 mb-4">
           <div className="w-10 h-[1px] bg-gray-400"></div>
           <p className="text-[#D4AF37] font-['Montserrat'] font-extrabold text-[10px] md:text-xs tracking-[0.2em] uppercase">
