@@ -532,19 +532,27 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
   return (
     <section 
       id="our-collection"
-      className="w-full relative overflow-hidden"
-      style={{ backgroundImage: "url('/background3.jpg')", backgroundSize: 'cover', backgroundPosition: 'top center', backgroundAttachment: 'fixed' }}
+      className="w-full relative"
+      style={{ backgroundImage: "url('/background4.jpg')", backgroundSize: 'cover', backgroundPosition: 'top center', backgroundAttachment: 'fixed' }}
     >
+      {/* Fixed Sticky Text Layer */}
+      <div className="sticky top-24 md:top-32 w-full flex flex-col items-center justify-center z-0 pointer-events-none mt-12">
+        <h1 className="text-6xl md:text-8xl lg:text-[120px] font-['Montserrat'] font-extrabold text-[#D4AF37] opacity-90 tracking-[0.1em] drop-shadow-2xl">ARION</h1>
+        <div className="flex items-center justify-center gap-4 mt-2 md:mt-4">
+          <div className="w-12 md:w-24 h-[1px] bg-[#D4AF37]/70"></div>
+          <p className="text-[#D4AF37] font-['Montserrat'] text-[10px] md:text-sm tracking-[0.3em] uppercase opacity-90 font-semibold">LUXURY CAR PERFUME COLLECTION</p>
+          <div className="w-12 md:w-24 h-[1px] bg-[#D4AF37]/70"></div>
+        </div>
+      </div>
+
       <motion.div 
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-        className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8"
+        className="w-full h-full flex flex-col items-center relative pb-6 md:pb-8 pt-24 md:pt-32"
       >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
-      {/* Spacer to allow the text baked into the background image to be visible */}
-      <div className="w-full h-[150px] md:h-[220px] relative z-10"></div>
 
       <div className="w-full max-w-[1600px] pb-12 overflow-hidden">
         {/* Mobile: Horizontal scroll, Desktop: 5-column grid */}
