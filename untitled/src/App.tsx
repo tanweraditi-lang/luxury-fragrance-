@@ -590,7 +590,7 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
         
         {/* Front Face - Vertical 9:16 Video Player */}
         <div 
-          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]"
+          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/40 bg-gray-900 [backface-visibility:hidden]"
           onClick={() => setIsFlipped(true)}
         >
           {/* Auto-playing Background Video */}
@@ -618,7 +618,7 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
 
         {/* Back Face - Perfume Bottle Image */}
         <div 
-          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center relative"
+          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/40 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center relative"
           style={{ background: item.bgGradient || '#fff' }}
           onClick={() => setIsFlipped(false)}
         >
