@@ -563,101 +563,61 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
 }
 
 function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => void }) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const currentPriceNum = parseInt(item.price.replace(/[^0-9]/g, '')) || 1499;
+  const oldPriceNum = Math.floor(currentPriceNum * 1.25); // 25% original markup
 
-  // Desktop hover triggers flip. Mobile tap toggles flip.
   return (
-    <div 
-      className="w-full max-w-[320px] flex flex-col items-center cursor-pointer relative transition-all duration-500 hover:-translate-y-2 perspective-[1000px]"
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
-    >
+    <div className="w-[280px] bg-white border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative flex flex-col group overflow-hidden">
       
-      {/* Flip Container */}
-      <div className={`w-full aspect-[9/16] relative transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} mb-2`}>
-        
-        {/* Front Face - Vertical 9:16 Video Player */}
-        <div 
-          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm bg-gray-900 [backface-visibility:hidden]"
-          onClick={() => setIsFlipped(true)}
-        >
-          {/* Auto-playing Background Video */}
-          {item.video ? (
-            <video 
-              src={item.video} 
-              poster={item.image}
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none" 
-            />
-          ) : (
-            <div className="absolute inset-0 w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
-               <span className="text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Video Missing</span>
-            </div>
-          )}
-          
-          {/* Soft Inner Shadow/Glow overlay */}
-          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 pointer-events-none z-10"></div>
-          
-          {/* Glowing Letter Overlay */}
-          {item.letter && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-              <div className="relative flex items-center justify-center">
-                {/* Highlighted Bold Letter without the excessive glow */}
-                <span className="relative text-3xl md:text-4xl font-['Montserrat'] font-black uppercase text-[#D4AF37]">
-                  {item.letter}
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Back Face - Perfume Bottle Image */}
-        <div 
-          className="absolute inset-0 w-full h-full rounded-[24px] overflow-hidden shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center relative"
-          style={{ background: item.bgGradient || '#fff' }}
-          onClick={() => setIsFlipped(false)}
-        >
-          {/* Soft Inner Shadow overlay */}
-          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
-          
-          {item.image ? (
-            <img 
-              src={item.image} 
-              alt={item.name} 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 z-0"
-            />
-          ) : (
-            <div className="absolute inset-0 z-0 flex items-center justify-center text-gray-400 font-['Montserrat'] font-bold text-sm tracking-widest uppercase">Coming Soon</div>
-          )}
-          
-          {/* Price and Add to Cart Overlay */}
-          <div className="absolute bottom-0 left-0 w-full pt-20 pb-6 px-6 flex flex-col items-center justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
-            <div className="text-2xl md:text-3xl font-['Montserrat'] font-extrabold text-white mb-4 tracking-[0.08em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {item.price}
-            </div>
-            <button 
-              className="w-full max-w-[220px] h-[44px] rounded-full bg-[#D4AF37] text-white font-bold text-[12px] md:text-[13px] uppercase tracking-widest hover:bg-[#E8C65A] active:scale-95 transition-all duration-300 border-none flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,0,0,0.25)] relative z-30"
-              onClick={(e) => {
-                e.stopPropagation(); // Prevents the card from flipping back when clicking the button
-                if (onAddToCart) onAddToCart();
-              }}
-            >
-              <ShoppingBag size={16} /> ADD TO CART
-            </button>
-          </div>
-        </div>
-
+      {/* Bestseller Badge */}
+      <div className="absolute top-4 left-4 bg-[#3B82F6] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider z-10">
+        BESTSELLER
       </div>
-      
-      {/* Product Name Below Video */}
-      <div className="mt-4 text-center">
-        <h3 className="font-['Montserrat'] font-extrabold uppercase text-sm md:text-base tracking-[0.2em] text-black">
-          {item.name}
+
+      {/* Image Area */}
+      <div className="w-full aspect-square bg-[#F8F8F8] flex items-center justify-center p-6 relative">
+        {item.image ? (
+          <img src={item.image} alt={item.name} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+        ) : (
+          <div className="text-gray-400 border-2 border-dashed border-gray-300 w-full h-full flex flex-col items-center justify-center">
+            <span className="text-xs font-semibold tracking-widest text-gray-400">PERFUME IMAGE</span>
+          </div>
+        )}
+      </div>
+
+      {/* Content Area */}
+      <div className="p-5 flex flex-col items-center text-center">
+        <h3 className="text-black font-bold text-[16px] leading-tight mb-1 font-['Montserrat'] line-clamp-2 h-10">
+          {item.name} Eau de Parfum for Women
         </h3>
+        <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-3">
+          LUXURY FRAGRANCE
+        </p>
+
+        {/* Rating */}
+        <div className="flex items-center gap-1 mb-4">
+          <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <span className="text-black font-semibold text-sm">(4.8)</span>
+        </div>
+
+        {/* Price */}
+        <div className="flex flex-col items-center mb-5">
+          <div className="flex items-end gap-2">
+            <span className="text-2xl font-extrabold text-black font-['Montserrat']">{item.price}</span>
+            <span className="text-sm text-gray-400 line-through mb-1">₹{oldPriceNum}</span>
+          </div>
+          <span className="text-[#16A34A] text-xs font-bold mt-1">SAVE ₹{oldPriceNum - currentPriceNum}</span>
+        </div>
+
+        {/* Add to Cart Button */}
+        <button 
+          onClick={(e) => { e.stopPropagation(); if (onAddToCart) onAddToCart(); }}
+          className="w-full bg-black text-white py-3 font-bold uppercase text-[13px] tracking-widest hover:bg-gray-800 transition-colors border-none cursor-pointer"
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );
