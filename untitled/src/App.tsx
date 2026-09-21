@@ -614,17 +614,6 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[24px] pointer-events-none z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 pointer-events-none z-10"></div>
           
-          {/* Glowing Letter Overlay */}
-          {item.letter && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-              <div className="relative flex items-center justify-center">
-                {/* Highlighted Bold Letter without the excessive glow */}
-                <span className="relative text-3xl md:text-4xl font-['Montserrat'] font-black uppercase text-[#D4AF37]">
-                  {item.letter}
-                </span>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Back Face - Perfume Bottle Image */}
