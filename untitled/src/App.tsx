@@ -195,7 +195,7 @@ export default function App() {
         <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
           <ProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
-        <section className="w-full relative z-20 bg-[#FDFBF7] py-12 md:py-24">
+        <section className="w-full relative z-20 bg-[#FDFBF7] pb-12 pt-4 md:pb-16 md:pt-4">
           <EcommerceProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
         <section ref={el => { sectionsRef.current[2] = el; }} className="w-full relative z-30 bg-[#FDFBF7]">
@@ -769,8 +769,8 @@ function FooterSection() {
 function EcommerceProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 flex flex-col items-center px-6">
-        <h2 className="text-3xl md:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4 mt-8 md:mt-0">
+      <div className="text-center w-full mx-auto mb-10 md:mb-12 flex flex-col items-center px-4">
+        <h2 className="text-2xl md:text-4xl lg:text-[2.5rem] font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4 mt-4 whitespace-nowrap">
           THE CLASSIC COLLECTION
         </h2>
         <div className="w-16 h-1 bg-black mb-6"></div>
