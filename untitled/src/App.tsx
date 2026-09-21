@@ -555,18 +555,18 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       </div>
 
       {/* Featured Image Below Bottle Cards */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 mt-4 mb-8">
-        <div className="w-full rounded-[24px] overflow-hidden shadow-xl border border-gray-100 relative">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 mt-4 mb-8 relative z-10">
+        <div className="w-full rounded-[24px] overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/40 relative bg-gray-900">
           <img src="./images/frag 2.png" alt="ARION Perfumes in Car Interior" className="w-full h-auto max-h-[70vh] object-cover hover:scale-105 transition-transform duration-700" />
         </div>
       </div>
 
       {/* Additional Collection Images */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col md:flex-row gap-6">
-        <div className="w-full md:w-1/2 aspect-square rounded-[24px] overflow-hidden shadow-xl border border-gray-100 relative bg-white">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col md:flex-row gap-6 relative z-10">
+        <div className="w-full md:w-1/2 aspect-square rounded-[24px] overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/40 relative bg-gray-900">
           <img src="./images/cc.png" alt="Collection Preview Left" className="absolute inset-0 w-full h-full object-cover" />
         </div>
-        <div className="w-full md:w-1/2 aspect-square rounded-[24px] overflow-hidden shadow-xl border border-gray-100 relative bg-white">
+        <div className="w-full md:w-1/2 aspect-square rounded-[24px] overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/40 relative bg-gray-900">
           <img src="./images/bb.png" alt="Collection Preview Right" className="absolute inset-0 w-full h-full object-cover" />
         </div>
       </div>
