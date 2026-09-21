@@ -538,8 +538,8 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       {/* Uniform dark overlay for the entire section */}
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
 
-      {/* Fixed Sticky Text Layer */}
-      <div className="sticky top-24 md:top-32 w-full flex flex-col items-center justify-center z-10 pointer-events-none mt-12">
+      {/* Fixed Absolute Text Layer */}
+      <div className="absolute top-24 md:top-32 left-0 w-full flex flex-col items-center justify-center z-10 pointer-events-none mt-12">
         <h1 className="text-6xl md:text-8xl lg:text-[120px] font-['Montserrat'] font-extrabold text-[#D4AF37] opacity-90 tracking-[0.1em] drop-shadow-2xl">ARION</h1>
         <div className="flex items-center justify-center gap-4 mt-2 md:mt-4">
           <div className="w-12 md:w-24 h-[1px] bg-[#D4AF37]/70"></div>
