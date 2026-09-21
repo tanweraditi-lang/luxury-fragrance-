@@ -489,7 +489,7 @@ const collectionData = [
     price: "₹1499",
     description: "Modern, sophisticated soft floral with powdery freshness.",
     family: "Soft Floral",
-    image: "", 
+    image: "/images/bottle 5.png", 
     video: "/images/our collection 4.mp4",
     bgGradient: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
     boxColor: "#EBBCC9",
