@@ -402,8 +402,8 @@ function FeatureSection() {
 
       {/* Quote */}
       <div className="text-center max-w-3xl mx-auto border-t border-gray-100 pt-12 md:pt-16 px-4">
-        <p className="font-['Montserrat'] font-extrabold uppercase text-xl md:text-2xl text-black leading-relaxed tracking-[0.08em] mb-6">
-          "A FRAGRANCE IS THE SILENT POETRY OF YOUR SOUL, LEAVING AN UNFORGETTABLE TRAIL OF MEMORIES WHEREVER YOU GO."
+        <p className="font-['Montserrat'] font-extrabold text-xl md:text-2xl text-black leading-relaxed tracking-[0.08em] mb-6">
+          "A fragrance is the silent poetry of your soul, leaving an unforgettable trail of memories wherever you go."
         </p>
         <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-['Montserrat'] font-extrabold">— THE HOUSE OF ARION</p>
       </div>
