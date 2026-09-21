@@ -216,7 +216,7 @@ export default function App() {
 }
 
 const heroImages = [
-  "/images/remove watermark.mp4"
+  "/images/remove-watermark.mp4"
 ];
 
 function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
@@ -294,7 +294,7 @@ function IngredientsSection() {
   return (
     <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
       <video
-        src="/images/journal 2.0.mp4"
+        src="/images/journal-2.0.mp4"
         autoPlay
         loop
         muted
@@ -459,8 +459,8 @@ const collectionData = [
     price: "₹999",
     description: "Pure and delicate white floral scent with a calm elegance.",
     family: "Floral",
-    image: "/images/bottle 1.jpeg",
-    video: "/images/our collection 1.mp4",
+    image: "/images/bottle-1.jpeg",
+    video: "/images/our-collection-1.mp4",
     bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
     boxColor: "#FAF7F2",
     letter: "A",
@@ -470,8 +470,8 @@ const collectionData = [
     price: "₹1499",
     description: "A deeply relaxing and aromatic herbaceous lavender profile.",
     family: "Aromatic",
-    image: "/images/bottle 4.jpeg", 
-    video: "/images/our collection 2.mp4",
+    image: "/images/bottle-4.jpeg", 
+    video: "/images/our-collection-2.mp4",
     bgGradient: "linear-gradient(135deg, #F4F0FF 0%, #D4C9ED 100%)",
     boxColor: "#E2D8F2",
     letter: "R",
@@ -481,8 +481,8 @@ const collectionData = [
     price: "₹1999",
     description: "Rich, velvety romance captured in a deep floral bouquet.",
     family: "Floral Woody",
-    image: "/images/bottle 2.jpeg", 
-    video: "/images/our collection 3.mp4",
+    image: "/images/bottle-2.jpeg", 
+    video: "/images/our-collection-3.mp4",
     bgGradient: "linear-gradient(135deg, #9A3652 0%, #5E162A 100%)",
     boxColor: "#6B1A2C",
     letter: "I",
@@ -492,8 +492,8 @@ const collectionData = [
     price: "₹1499",
     description: "Modern, sophisticated soft floral with powdery freshness.",
     family: "Soft Floral",
-    image: "/images/bottle 5.png", 
-    video: "/images/our collection 4.mp4",
+    image: "/images/bottle-5.png", 
+    video: "/images/our-collection-4.mp4",
     bgGradient: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
     boxColor: "#EBBCC9",
     letter: "O",
@@ -503,8 +503,8 @@ const collectionData = [
     price: "₹2499",
     description: "Deep, mysterious and earthy scent for the bold.",
     family: "Woody",
-    image: "/images/bottle 3.jpeg", 
-    video: "/images/our collection 5.mp4",
+    image: "/images/bottle-3.jpeg", 
+    video: "/images/our-collection-5.mp4",
     bgGradient: "linear-gradient(135deg, #FDFBF7 0%, #EFE9DB 100%)",
     boxColor: "#FAF7F2",
     letter: "N",
