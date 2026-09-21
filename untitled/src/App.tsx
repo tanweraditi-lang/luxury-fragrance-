@@ -656,7 +656,7 @@ function ProductCard({ item, onAddToCart }: { item: any; onAddToCart?: () => voi
       
       {/* Product Name Below Video */}
       <div className="mt-4 text-center">
-        <h3 className="font-['Montserrat'] font-extrabold uppercase text-sm md:text-base tracking-[0.2em] text-black">
+        <h3 className="font-['Montserrat'] font-extrabold uppercase text-sm md:text-base tracking-[0.2em] text-[#D4AF37]">
           {item.name}
         </h3>
       </div>
