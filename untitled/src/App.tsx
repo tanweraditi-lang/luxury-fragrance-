@@ -535,7 +535,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-      style={{ backgroundImage: "url('/background2.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
+      style={{ backgroundImage: "url('/background3.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
       id="our-collection" 
       className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
     >
