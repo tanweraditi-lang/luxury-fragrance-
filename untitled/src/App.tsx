@@ -539,7 +539,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
 
       {/* Fixed Absolute Text Layer */}
-      <div className="absolute top-24 md:top-32 left-0 w-full flex flex-col items-center justify-center z-10 pointer-events-none mt-12">
+      <div className="absolute top-8 md:top-12 left-0 w-full flex flex-col items-center justify-center z-10 pointer-events-none">
         <h1 className="text-6xl md:text-8xl lg:text-[120px] font-['Montserrat'] font-extrabold text-[#D4AF37] opacity-90 tracking-[0.1em] drop-shadow-2xl">ARION</h1>
         <div className="flex items-center justify-center gap-4 mt-2 md:mt-4">
           <div className="w-12 md:w-24 h-[1px] bg-[#D4AF37]/70"></div>
@@ -553,7 +553,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-        className="w-full h-full flex flex-col items-center relative pb-6 md:pb-8 pt-[240px] md:pt-[340px] lg:pt-[400px] z-20"
+        className="w-full h-full flex flex-col items-center relative pb-6 md:pb-8 pt-[160px] md:pt-[220px] lg:pt-[240px] z-20"
       >
 
       <div className="w-full max-w-[1600px] pb-12 overflow-hidden">
