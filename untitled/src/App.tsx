@@ -313,23 +313,6 @@ function IngredientsSection() {
         className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
       />
 
-      {/* Tagline on Left (Visible when drawer closed) */}
-      <AnimatePresence>
-        {!isDrawerOpen && (
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="absolute left-20 md:left-32 z-10 flex items-center pointer-events-none max-w-lg"
-          >
-            <h2 className="text-[#D4AF37] font-['Montserrat'] font-extrabold uppercase text-xl md:text-3xl leading-tight tracking-[0.08em] drop-shadow-xl">
-              ELEVATE EVERY DRIVE. <br/>THE LUXURY CAR PERFUME.
-            </h2>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Sliding Black Drawer Container */}
       <motion.div
         initial={false}
