@@ -35,6 +35,8 @@ export default function App() {
   const [activeSection, setActiveSection] = useState(0);
   const [isNavHovered, setIsNavHovered] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const lenisRef = useRef<Lenis | null>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
@@ -161,8 +163,23 @@ export default function App() {
         )}
 
         <div className="w-full flex items-center justify-between mb-5 relative z-10">
-          <div className="flex items-center w-24">
-             <Search size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity" />
+          <div className="flex items-center w-24 relative">
+             <Search size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity relative z-20" onClick={() => setIsSearchOpen(!isSearchOpen)} />
+             <div className={`absolute left-8 top-1/2 -translate-y-1/2 overflow-hidden transition-all duration-500 ease-out z-10 ${isSearchOpen ? 'w-[140px] md:w-[200px] opacity-100' : 'w-0 opacity-0 pointer-events-none'}`}>
+               <input 
+                 type="text" 
+                 placeholder="SEARCH..." 
+                 className="w-full bg-transparent border-b border-black/40 focus:border-black outline-none text-xs pb-1 placeholder:text-gray-500 font-['Montserrat'] tracking-widest uppercase transition-colors"
+                 value={searchQuery}
+                 onChange={(e) => setSearchQuery(e.target.value)}
+                 onKeyDown={(e) => {
+                   if (e.key === 'Enter') {
+                     setIsSearchOpen(false);
+                     setSearchQuery("");
+                   }
+                 }}
+               />
+             </div>
           </div>
           
           <div className="text-[26px] md:text-[30px] font-['Montserrat'] tracking-[0.2em] font-bold antialiased uppercase flex-1 text-center" style={{ color: '#D4AF37' }}>
