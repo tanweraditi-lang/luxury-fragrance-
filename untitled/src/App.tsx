@@ -257,12 +257,6 @@ function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col items-start relative z-20 h-auto md:h-[100vh] justify-center py-12 md:py-0">
         <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start mt-4">
           
-          <h2 className="text-[11px] md:text-[13px] font-['Montserrat'] font-bold tracking-[0.3em] uppercase text-black mb-4">
-            PREMIUM CAR PERFUME
-          </h2>
-          
-          <div className="w-8 h-[2px] bg-black mb-6"></div>
-          
           <h1 className="text-2xl md:text-3xl lg:text-[32px] font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-8 leading-[1.3]">
             MORE THAN A FRAGRANCE<br/>IT'S A JOURNEY
           </h1>
