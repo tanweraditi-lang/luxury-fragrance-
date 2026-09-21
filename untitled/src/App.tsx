@@ -816,10 +816,10 @@ function EcommerceProductCard({ item, onAddToCart }: { item: any; onAddToCart?: 
       {/* Content Area */}
       <div className="p-5 flex flex-col items-center text-center">
         <h3 className="text-black font-bold text-[16px] leading-tight mb-1 font-['Montserrat'] line-clamp-2 h-10">
-          {item.name} Eau de Parfum for Women
+          {item.name} Premium Car Fragrance
         </h3>
         <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-3">
-          LUXURY FRAGRANCE
+          LUXURY CAR PERFUME
         </p>
 
         {/* Rating */}
