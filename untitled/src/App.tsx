@@ -389,7 +389,7 @@ function FeatureSection() {
         <h2 className="text-3xl md:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-6 leading-tight">
           THE ART OF LUXURY
         </h2>
-        <p className="text-gray-800 font-['Montserrat'] font-bold text-[13px] md:text-[15px] leading-loose max-w-2xl mx-auto uppercase tracking-wider">
+        <p className="text-gray-800 font-['Montserrat'] font-bold text-[13px] md:text-[15px] leading-loose max-w-2xl mx-auto tracking-wider">
           Discover the meticulous craftsmanship, unparalleled quality, and exceptional services that define the <b>ARION</b> experience. We believe that true luxury lies in the details.
         </p>
       </div>
