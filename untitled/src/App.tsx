@@ -195,7 +195,7 @@ export default function App() {
         <section ref={el => { sectionsRef.current[1] = el; }} className="w-full relative z-20">
           <ProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
-        <section className="w-full relative z-20 bg-[#FDFBF7] pb-12 pt-4 md:pb-16 md:pt-4">
+        <section className="w-full relative z-20 bg-[#FDFBF7] pb-12 pt-0 md:pb-16">
           <EcommerceProductSection onAddToCart={() => setCartCount(prev => prev + 1)} />
         </section>
         <section ref={el => { sectionsRef.current[2] = el; }} className="w-full relative z-30 bg-[#FDFBF7]">
@@ -519,7 +519,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
       id="our-collection" 
-      className="w-full h-full bg-[#FDFBF7] flex flex-col items-center relative py-12 md:py-16 overflow-hidden"
+      className="w-full h-full bg-[#FDFBF7] flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
     >
       <div className="text-center mb-8 md:mb-12 flex flex-col items-center w-full px-6">
         <div className="flex items-center gap-4 mb-4">
@@ -553,7 +553,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       </div>
 
       {/* Additional Collection Images */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 mb-12 flex flex-col md:flex-row gap-6">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-1/2 aspect-square rounded-[24px] overflow-hidden shadow-xl border border-gray-100 relative bg-white">
           <img src="./images/cc.png" alt="Collection Preview Left" className="absolute inset-0 w-full h-full object-cover" />
         </div>
@@ -769,8 +769,8 @@ function FooterSection() {
 function EcommerceProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="text-center w-full mx-auto mb-10 md:mb-12 flex flex-col items-center px-4">
-        <h2 className="text-2xl md:text-4xl lg:text-[2.5rem] font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4 mt-4 whitespace-nowrap">
+      <div className="text-center w-full mx-auto mb-10 md:mb-12 flex flex-col items-center px-4 mt-8 md:mt-12">
+        <h2 className="text-2xl md:text-4xl lg:text-[2.5rem] font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4 whitespace-nowrap">
           THE CLASSIC COLLECTION
         </h2>
         <div className="w-16 h-1 bg-black mb-6"></div>
