@@ -416,10 +416,10 @@ function FeatureSection() {
 
 function PerfumeMarquee() {
   const perfumes = [
-    { name: "Lavender", color: "#8B5CF6" }, // Purple
-    { name: "Rose", color: "#E11D48" },     // Red
-    { name: "Jasmine", color: "#D4C7A5" },  // Creamy Gold
-    { name: "Dahlia", color: "#EC4899" }    // Pink
+    { name: "Lavender", color: "#000000" }, 
+    { name: "Rose", color: "#000000" },     
+    { name: "Jasmine", color: "#000000" },  
+    { name: "Dahlia", color: "#000000" }    
   ];
   const set = [...perfumes, ...perfumes, ...perfumes, ...perfumes, ...perfumes];
 
