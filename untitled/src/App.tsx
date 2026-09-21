@@ -535,18 +535,20 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+      style={{ backgroundImage: "url('/background.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
       id="our-collection" 
-      className="w-full h-full bg-[#FDFBF7] flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
+      className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
     >
-      <div className="text-center mb-8 md:mb-12 flex flex-col items-center w-full px-6">
+      <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
+      <div className="text-center mb-8 md:mb-12 flex flex-col items-center w-full px-6 relative z-10">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-10 h-[1px] bg-gray-300"></div>
-          <p className="text-gray-500 font-['Montserrat'] font-extrabold text-[10px] md:text-xs tracking-[0.2em] uppercase">
+          <div className="w-10 h-[1px] bg-gray-400"></div>
+          <p className="text-[#D4AF37] font-['Montserrat'] font-extrabold text-[10px] md:text-xs tracking-[0.2em] uppercase">
             EXCLUSIVE COLLECTION
           </p>
-          <div className="w-10 h-[1px] bg-gray-300"></div>
+          <div className="w-10 h-[1px] bg-gray-400"></div>
         </div>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-['Montserrat'] font-extrabold text-white uppercase tracking-[0.08em] mb-4 drop-shadow-md">
           THE COLLECTION
         </h2>
       </div>
