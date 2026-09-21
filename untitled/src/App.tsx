@@ -553,7 +553,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-        className="w-full h-full flex flex-col items-center relative pb-6 md:pb-8 pt-24 md:pt-32 z-20"
+        className="w-full h-full flex flex-col items-center relative pb-6 md:pb-8 pt-[240px] md:pt-[340px] lg:pt-[400px] z-20"
       >
 
       <div className="w-full max-w-[1600px] pb-12 overflow-hidden">
