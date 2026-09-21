@@ -530,15 +530,18 @@ const collectionData = [
 
 function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-      style={{ backgroundImage: "url('/background3.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
-      id="our-collection" 
-      className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8 overflow-hidden"
+    <section 
+      id="our-collection"
+      className="w-full relative overflow-hidden"
+      style={{ backgroundImage: "url('/background3.jpg')", backgroundSize: 'cover', backgroundPosition: 'top center', backgroundAttachment: 'fixed' }}
     >
+      <motion.div 
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+        className="w-full h-full flex flex-col items-center relative pt-12 pb-6 md:pt-16 md:pb-8"
+      >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
       {/* Spacer to allow the text baked into the background image to be visible */}
       <div className="w-full h-[150px] md:h-[220px] relative z-10"></div>
@@ -570,7 +573,8 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
           <img src="./images/bb.png" alt="Collection Preview Right" className="absolute inset-0 w-full h-full object-cover" />
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </section>
   );
 }
 
