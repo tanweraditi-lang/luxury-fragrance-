@@ -233,19 +233,27 @@ export default function App() {
 }
 
 const heroImages = [
-  "./images/remove-watermark.mp4"
+  "./images/remove-watermark.mp4",
+  "./images/hero section video 2.mp4"
 ];
 
 function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const handleVideoEnded = () => {
+    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+  };
+
   return (
     <div className="relative w-full min-h-[100vh] md:h-[100vh] flex flex-col md:flex-row md:items-center overflow-hidden bg-[#FDFBF7] md:bg-gray-900">
       <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900 pt-16 md:pt-0">
         <video
-          src={heroImages[0]}
+          key={heroImages[currentVideoIndex]}
+          src={heroImages[currentVideoIndex]}
           autoPlay
-          loop
           muted
           playsInline
+          onEnded={handleVideoEnded}
           className="absolute inset-0 w-full h-full object-contain md:object-cover"
         />
       </div>
