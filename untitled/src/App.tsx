@@ -222,6 +222,9 @@ export default function App() {
           <FeatureSection />
           <PerfumeMarquee />
         </section>
+        <section className="w-full relative z-40 bg-white">
+          <FAQSection />
+        </section>
         <section ref={el => { sectionsRef.current[4] = el; }} className="w-full relative z-50">
           <FooterSection />
         </section>
@@ -459,7 +462,7 @@ const collectionData = [
   {
     name: "Rose Bottle",
     price: "₹999",
-    description: "Pure and delicate white floral scent with a calm elegance.",
+    description: "Experience the pure and delicate white floral scent with a calm elegance. Infused with natural rose extracts, this premium car perfume offers up to 60 days of continuous fragrance, neutralizing odors while leaving a sophisticated trail.",
     family: "Floral",
     image: "./images/bottle-1.jpeg",
     video: "./images/our-collection-1.mp4",
@@ -470,7 +473,7 @@ const collectionData = [
   {
     name: "Lavender",
     price: "₹1499",
-    description: "A deeply relaxing and aromatic herbaceous lavender profile.",
+    description: "A deeply relaxing and aromatic herbaceous lavender profile. Scientifically formulated to reduce driving stress, this long-lasting car air freshener uses authentic essential oils to create a serene cabin environment.",
     family: "Aromatic",
     image: "./images/bottle-4.jpeg", 
     video: "./images/our-collection-2.mp4",
@@ -481,7 +484,7 @@ const collectionData = [
   {
     name: "Dahlia",
     price: "₹1999",
-    description: "Rich, velvety romance captured in a deep floral bouquet.",
+    description: "Rich, velvety romance captured in a deep floral bouquet. Our exclusive Dahlia blend features high-concentration perfume oils, delivering a luxurious, intense scent throw perfect for premium vehicle interiors.",
     family: "Floral Woody",
     image: "./images/bottle-2.jpeg", 
     video: "./images/our-collection-3.mp4",
@@ -492,7 +495,7 @@ const collectionData = [
   {
     name: "Ocean Blue",
     price: "₹1499",
-    description: "Modern, sophisticated soft floral with powdery freshness.",
+    description: "Modern, sophisticated soft floral with powdery freshness. Inspired by coastal breezes, this premium aquatic car fragrance eliminates stale air and replaces it with a crisp, invigorating atmosphere for every journey.",
     family: "Soft Floral",
     image: "./images/bottle-5.png", 
     video: "./images/our-collection-4.mp4",
@@ -503,7 +506,7 @@ const collectionData = [
   {
     name: "Jasmine",
     price: "₹2499",
-    description: "Deep, mysterious and earthy scent for the bold.",
+    description: "Deep, mysterious and earthy scent for the bold. Crafted with rare midnight jasmine absolutes, this top-tier luxury car perfume provides an exotic, captivating aroma designed for discerning fragrance connoisseurs.",
     family: "Woody",
     image: "./images/bottle-3.jpeg", 
     video: "./images/our-collection-5.mp4",
@@ -525,7 +528,7 @@ function ProductSection({ onAddToCart }: { onAddToCart?: () => void }) {
 
       {/* Fixed Absolute Text Layer */}
       <div className="absolute top-8 md:top-12 left-0 w-full flex flex-col items-center justify-center z-10 pointer-events-none">
-        <h1 className="text-6xl md:text-8xl lg:text-[120px] font-['Montserrat'] font-extrabold text-[#D4AF37] opacity-90 tracking-[0.1em] drop-shadow-2xl">ARION</h1>
+        <h2 className="text-6xl md:text-8xl lg:text-[120px] font-['Montserrat'] font-extrabold text-[#D4AF37] opacity-90 tracking-[0.1em] drop-shadow-2xl">ARION</h2>
         <div className="flex items-center justify-center gap-4 mt-2 md:mt-4">
           <div className="w-12 md:w-24 h-[1px] bg-[#D4AF37]/70"></div>
           <p className="text-[#D4AF37] font-['Montserrat'] text-[10px] md:text-sm tracking-[0.3em] uppercase opacity-90 font-semibold">LUXURY CAR PERFUME COLLECTION</p>
@@ -725,11 +728,11 @@ function FooterSection() {
           <div className="flex flex-col md:items-start items-center text-center md:text-left">
             <h4 className="text-[20px] md:text-[22px] font-['Montserrat'] font-extrabold uppercase text-white mb-4 tracking-[0.08em]">SUPPORT</h4>
             <ul className="flex flex-col gap-3 text-[12px] md:text-[14px] font-['Montserrat'] font-bold uppercase tracking-wider text-gray-400">
-              <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Shipping</button></li>
-              <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Returns</button></li>
-              <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Privacy Policy</button></li>
-              <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Terms & Conditions</button></li>
-              <li><button className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">FAQ</button></li>
+              <li><a href="/shipping-policy" className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Shipping Policy</a></li>
+              <li><a href="/refund-policy" className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Refund Policy</a></li>
+              <li><a href="/privacy-policy" className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions" className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">Terms & Conditions</a></li>
+              <li><button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="hover:text-white hover:underline underline-offset-4 decoration-gray-500 transition-all duration-300">FAQ</button></li>
             </ul>
           </div>
 
@@ -843,6 +846,32 @@ function EcommerceProductCard({ item, onAddToCart }: { item: any; onAddToCart?: 
         >
           Add To Cart
         </button>
+      </div>
+    </div>
+  );
+}
+
+function FAQSection() {
+  const faqs = [
+    { question: "How long does ARION premium car perfume last?", answer: "Each ARION car perfume bottle is formulated with high-concentration essential oils, providing up to 60 days of continuous luxury fragrance under normal driving conditions." },
+    { question: "Are ARION fragrances safe for my car interior?", answer: "Yes, our car perfumes are completely safe for all vehicle interiors. The spill-proof design ensures no leaks on your dashboard, leather, or upholstery." },
+    { question: "What makes ARION different from regular air fresheners?", answer: "Unlike standard synthetic air fresheners, ARION uses fine fragrance craftsmanship similar to personal luxury perfumes, offering complex, multi-layered scent notes that evolve over time while actively neutralizing bad odors." },
+    { question: "Can I use ARION perfumes in extreme temperatures?", answer: "Our premium glass bottles and fragrance formulations are designed to withstand normal cabin temperature fluctuations. However, for optimal longevity, we recommend avoiding direct, prolonged exposure to extreme heat." }
+  ];
+
+  return (
+    <div className="w-full py-16 md:py-24 px-6 md:px-16 bg-[#FDFBF7] flex flex-col items-center">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-5xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em] mb-6">Frequently Asked Questions</h2>
+        <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-6"></div>
+      </div>
+      <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
+        {faqs.map((faq, index) => (
+          <div key={index} className="border-b border-gray-200 pb-6">
+            <h3 className="text-[16px] md:text-[18px] font-['Montserrat'] font-bold text-black mb-3">{faq.question}</h3>
+            <p className="text-[14px] md:text-[15px] font-['Montserrat'] font-medium text-gray-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

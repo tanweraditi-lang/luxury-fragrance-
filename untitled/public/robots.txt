@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arion-perfume.com/sitemap.xml
