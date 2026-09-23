@@ -31,6 +31,13 @@ const perfumeSantorini = "/secret.png";
 const perfumeIntense = "/secret.png";
 const perfumeTropez = "/secret.png";
 
+const faqs = [
+  { question: "How long does ARION premium car perfume last?", answer: "Each ARION car perfume bottle is formulated with high-concentration essential oils, providing up to 60 days of continuous luxury fragrance under normal driving conditions." },
+  { question: "Are ARION fragrances safe for my car interior?", answer: "Yes, our car perfumes are completely safe for all vehicle interiors. The spill-proof design ensures no leaks on your dashboard, leather, or upholstery." },
+  { question: "What makes ARION different from regular air fresheners?", answer: "Unlike standard synthetic air fresheners, ARION uses fine fragrance craftsmanship similar to personal luxury perfumes, offering complex, multi-layered scent notes that evolve over time while actively neutralizing bad odors." },
+  { question: "Can I use ARION perfumes in extreme temperatures?", answer: "Our premium glass bottles and fragrance formulations are designed to withstand normal cabin temperature fluctuations. However, for optimal longevity, we recommend avoiding direct, prolonged exposure to extreme heat." }
+];
+
 export default function App() {
   const [activeSection, setActiveSection] = useState(0);
   const [isNavHovered, setIsNavHovered] = useState(false);
@@ -136,6 +143,7 @@ export default function App() {
 
   return (
     <div className="font-sans text-gray-900 bg-[#FDFBF7] min-h-screen w-full flex flex-col relative">
+      <StructuredData />
       {/* Top Hover Detection Zone */}
       <div
         className="fixed top-0 left-0 w-full h-12 z-[40]"
@@ -852,12 +860,6 @@ function EcommerceProductCard({ item, onAddToCart }: { item: any; onAddToCart?: 
 }
 
 function FAQSection() {
-  const faqs = [
-    { question: "How long does ARION premium car perfume last?", answer: "Each ARION car perfume bottle is formulated with high-concentration essential oils, providing up to 60 days of continuous luxury fragrance under normal driving conditions." },
-    { question: "Are ARION fragrances safe for my car interior?", answer: "Yes, our car perfumes are completely safe for all vehicle interiors. The spill-proof design ensures no leaks on your dashboard, leather, or upholstery." },
-    { question: "What makes ARION different from regular air fresheners?", answer: "Unlike standard synthetic air fresheners, ARION uses fine fragrance craftsmanship similar to personal luxury perfumes, offering complex, multi-layered scent notes that evolve over time while actively neutralizing bad odors." },
-    { question: "Can I use ARION perfumes in extreme temperatures?", answer: "Our premium glass bottles and fragrance formulations are designed to withstand normal cabin temperature fluctuations. However, for optimal longevity, we recommend avoiding direct, prolonged exposure to extreme heat." }
-  ];
 
   return (
     <div className="w-full py-16 md:py-24 px-6 md:px-16 bg-[#FDFBF7] flex flex-col items-center">
@@ -874,5 +876,70 @@ function FAQSection() {
         ))}
       </div>
     </div>
+  );
+}
+
+function StructuredData() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://arion-perfume.com/#organization",
+        "name": "ARION",
+        "url": "https://arion-perfume.com",
+        "logo": "https://arion-perfume.com/logo512.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-0000000000",
+          "contactType": "customer service"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arion-perfume.com/#website",
+        "url": "https://arion-perfume.com",
+        "name": "ARION - Premium Luxury Car Perfume",
+        "publisher": {
+          "@id": "https://arion-perfume.com/#organization"
+        }
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://arion-perfume.com/#brand",
+        "name": "ARION",
+        "logo": "https://arion-perfume.com/logo512.png"
+      },
+      {
+        "@type": "Product",
+        "@id": "https://arion-perfume.com/#product",
+        "name": "ARION Premium Car Perfume",
+        "description": "Experience timeless sophistication with ARION Premium Car Perfumes, designed for those who leave a little mystery behind.",
+        "brand": {
+          "@id": "https://arion-perfume.com/#brand"
+        },
+        "category": "Car Air Freshener",
+        "image": "https://arion-perfume.com/hero.png"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://arion-perfume.com/#faq",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }
+    ]
+  };
+
+  return (
+    <script 
+      type="application/ld+json" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} 
+    />
   );
 }
