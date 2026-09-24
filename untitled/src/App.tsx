@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, ChevronLeft, Search, ShoppingBag, User, Droplet, Wind, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, ArrowRight, MessageCircle, RefreshCcw, ShieldCheck, Truck, Plane, Leaf, Car, Shield, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Search, ShoppingBag, User, Droplet, Wind, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, ArrowRight, MessageCircle, RefreshCcw, ShieldCheck, Truck, Plane, Leaf, Car, Shield, Play, Menu, X } from 'lucide-react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -38,14 +38,19 @@ const faqs = [
   { question: "Can I use ARION perfumes in extreme temperatures?", answer: "Our premium glass bottles and fragrance formulations are designed to withstand normal cabin temperature fluctuations. However, for optimal longevity, we recommend avoiding direct, prolonged exposure to extreme heat." }
 ];
 
+import { usePageTracking } from './hooks/usePageTracking';
+
 export default function App() {
   const [activeSection, setActiveSection] = useState(0);
   const [isNavHovered, setIsNavHovered] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+
+  usePageTracking();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -144,6 +149,33 @@ export default function App() {
   return (
     <div className="font-sans text-gray-900 bg-[#FDFBF7] min-h-screen w-full flex flex-col relative">
       <StructuredData />
+      
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+            className="fixed inset-0 bg-white z-[110] flex flex-col items-center justify-center px-6"
+          >
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute top-6 right-6 p-2 text-black"
+            >
+              <X size={28} />
+            </button>
+            <div className="flex flex-col gap-8 text-[20px] font-['Montserrat'] uppercase tracking-[0.15em] font-bold items-center text-black">
+              <button onClick={() => { scrollToSection(1); setIsMobileMenuOpen(false); }} className="hover:opacity-70 transition-all">Collections</button>
+              <button onClick={() => { scrollToSection(2); setIsMobileMenuOpen(false); }} className="hover:opacity-70 transition-all">Our story</button>
+              <button onClick={() => { scrollToSection(3); setIsMobileMenuOpen(false); }} className="hover:opacity-70 transition-all">Journals</button>
+              <button onClick={() => { scrollToSection(4); setIsMobileMenuOpen(false); }} className="hover:opacity-70 transition-all">Contact</button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Top Hover Detection Zone */}
       <div
         className="fixed top-0 left-0 w-full h-12 z-[40]"
@@ -194,14 +226,20 @@ export default function App() {
             ARION
           </div>
           
-          <div className="flex gap-6 items-center justify-end w-24">
-            <User size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity" />
+          <div className="flex gap-4 md:gap-6 items-center justify-end w-24">
+            <User size={22} strokeWidth={1.5} className="cursor-pointer hover:opacity-70 transition-opacity hidden md:block" />
             <div className="relative cursor-pointer hover:opacity-70 transition-opacity">
               <ShoppingBag size={22} strokeWidth={1.5} />
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-2 bg-white border border-gray-200 text-black text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">{cartCount}</span>
               )}
             </div>
+            <button 
+              className="md:hidden cursor-pointer hover:opacity-70 transition-opacity"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu size={24} strokeWidth={1.5} />
+            </button>
           </div>
         </div>
         <div className="hidden md:flex gap-12 text-[13px] md:text-[15px] font-['Montserrat'] uppercase tracking-[0.15em] font-bold items-center relative z-10">
@@ -257,7 +295,7 @@ function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
 
   return (
     <div className="relative w-full min-h-[100vh] md:h-[100vh] flex flex-col md:flex-row md:items-center overflow-hidden bg-[#FDFBF7] md:bg-gray-900">
-      <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900 pt-16 md:pt-0">
+      <div className="relative w-full h-[50vh] md:absolute md:inset-0 md:h-[100vh] z-0 flex items-center justify-center bg-gray-900">
         <video
           key={heroImages[currentVideoIndex]}
           src={heroImages[currentVideoIndex]}
@@ -265,11 +303,13 @@ function HeroSection({ onShopClick }: { onShopClick?: () => void }) {
           muted
           playsInline
           onEnded={handleVideoEnded}
-          className="absolute inset-0 w-full h-full object-contain md:object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
       {/* Light overlay to ensure black text remains readable over the image */}
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent w-full md:w-1/2 z-10"></div>
+      {/* Top gradient on mobile to ensure navbar icons are visible */}
+      <div className="md:hidden absolute inset-0 h-[100px] bg-gradient-to-b from-white/70 to-transparent w-full z-10 pointer-events-none"></div>
 
 
 
