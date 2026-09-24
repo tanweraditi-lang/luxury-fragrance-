@@ -53,6 +53,10 @@ export default function App() {
   usePageTracking();
 
   useEffect(() => {
+    // Disable Lenis on mobile devices to prevent scroll hijacking and touch issues
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -131,6 +135,8 @@ export default function App() {
   const scrollToSection = (index: number) => {
     if (lenisRef.current && sectionsRef.current[index]) {
       lenisRef.current.scrollTo(sectionsRef.current[index]!);
+    } else if (sectionsRef.current[index]) {
+      sectionsRef.current[index]?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
