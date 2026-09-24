@@ -362,17 +362,21 @@ function IngredientsSection() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div className="w-full relative h-[60vh] md:h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-gray-900">
-      <video
-        src="./images/journal-2.0.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
-      />
+    <div className="w-full relative flex flex-col md:block md:h-[100vh] bg-gray-900 overflow-hidden">
+      
+      {/* Background Video - static height on mobile, absolute full on desktop */}
+      <div className="w-full h-[40vh] md:h-auto md:absolute md:inset-0 z-0">
+        <video
+          src="./images/journal-2.0.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover brightness-[1.25] contrast-[1.1]"
+        />
+      </div>
 
-      {/* Sliding Black Drawer Container */}
+      {/* Desktop Sliding Drawer */}
       <motion.div
         initial={false}
         animate={{ x: isDrawerOpen ? 0 : "calc(-100% + 40px)" }}
@@ -380,7 +384,7 @@ function IngredientsSection() {
         onMouseEnter={() => setIsDrawerOpen(true)}
         onMouseLeave={() => setIsDrawerOpen(false)}
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-        className="absolute top-0 left-0 h-full w-[85%] md:w-[45%] max-w-[480px] bg-[#FFDAB9]/95 backdrop-blur-xl border-r border-[#D4AF37]/30 z-20 flex flex-col justify-center px-6 md:px-10 cursor-pointer shadow-[20px_0_50px_rgba(0,0,0,0.5)]"
+        className="hidden md:flex absolute top-0 left-0 h-full w-[45%] max-w-[480px] bg-[#FFDAB9]/95 backdrop-blur-xl border-r border-[#D4AF37]/30 z-20 flex-col justify-center px-10 cursor-pointer shadow-[20px_0_50px_rgba(0,0,0,0.5)]"
       >
         {/* Visible Edge Indicator (when closed) */}
         <motion.div 
@@ -392,34 +396,65 @@ function IngredientsSection() {
 
         {/* Inner Cards */}
         <div 
-          className="flex flex-col gap-4 md:gap-6 w-full max-h-full justify-center overflow-y-auto py-8 no-scrollbar transition-opacity duration-300"
+          className="flex flex-col gap-6 w-full max-h-full justify-center overflow-y-auto py-8 no-scrollbar transition-opacity duration-300"
           style={{ opacity: isDrawerOpen ? 1 : 0, pointerEvents: isDrawerOpen ? "auto" : "none" }}
         >
             {/* Card 1 */}
-            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">Luxury Atmosphere</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-lg mb-2">Luxury Atmosphere</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[14px] leading-relaxed">
                 Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
               </p>
             </div>
             
             {/* Card 2 */}
-            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">One Touch Refresh</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-lg mb-2">One Touch Refresh</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[14px] leading-relaxed">
                 A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
               </p>
             </div>
             
             {/* Card 3 */}
-            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 md:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
-              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] md:text-lg mb-2">Long-Lasting Elegance</h3>
-              <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] md:text-[14px] leading-relaxed">
+            <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+              <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-lg mb-2">Long-Lasting Elegance</h3>
+              <p className="font-['Montserrat'] font-medium text-gray-700 text-[14px] leading-relaxed">
                 Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
               </p>
             </div>
         </div>
       </motion.div>
+
+      {/* Mobile Stacked Layout (No Drawer) */}
+      <div className="md:hidden w-full bg-[#FFDAB9] flex flex-col gap-4 px-6 py-10 z-10">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl font-['Montserrat'] font-extrabold text-black uppercase tracking-[0.08em]">Our Story</h2>
+            <div className="w-12 h-1 bg-[#D4AF37] mx-auto mt-3"></div>
+          </div>
+          {/* Card 1 */}
+          <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 shadow-xl">
+            <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] mb-2">Luxury Atmosphere</h3>
+            <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] leading-relaxed">
+              Experience a calm and refined cabin with a premium fragrance crafted to transform every drive into a luxurious journey.
+            </p>
+          </div>
+          
+          {/* Card 2 */}
+          <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 shadow-xl">
+            <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] mb-2">One Touch Refresh</h3>
+            <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] leading-relaxed">
+              A single press instantly fills your car with elegant rose-inspired fragrance, creating a fresh and sophisticated driving experience.
+            </p>
+          </div>
+          
+          {/* Card 3 */}
+          <div className="w-full bg-white/90 backdrop-blur-md border border-white/40 rounded-2xl p-5 shadow-xl">
+            <h3 className="font-['Montserrat'] font-extrabold text-gray-900 uppercase tracking-[0.08em] text-[13px] mb-2">Long-Lasting Elegance</h3>
+            <p className="font-['Montserrat'] font-medium text-gray-700 text-[11px] leading-relaxed">
+              Designed for daily commutes and long journeys, ARION keeps your cabin feeling fresh, comfortable, and luxurious wherever the road takes you.
+            </p>
+          </div>
+      </div>
     </div>
   );
 }
